@@ -57,6 +57,20 @@ https://github.com/ultralytics/ultralytics
 
 ---
 
+### Structure-from-Motion (COLMAP)
+
+**COLMAP** is used to reconstruct the 3D geometry of the bridge and to maintain spatial consistency between UAV images captured at different inspection times.
+
+The reconstructed SfM model provides:
+- Camera poses  
+- Sparse point clouds  
+- A shared reference frame for damage comparison  
+
+COLMAP:  
+https://github.com/colmap/colmap
+
+---
+
 ### Hierarchical Localization
 
 To achieve robust camera pose estimation across long-term inspections with significant appearance changes, **hierarchical localization (hloc)** is employed.
@@ -73,19 +87,6 @@ https://github.com/cvg/Hierarchical-Localization
 
 ---
 
-### Structure-from-Motion (COLMAP)
-
-**COLMAP** is used to reconstruct the 3D geometry of the bridge and to maintain spatial consistency between UAV images captured at different inspection times.
-
-The reconstructed SfM model provides:
-- Camera poses  
-- Sparse point clouds  
-- A shared reference frame for damage comparison  
-
-COLMAP:  
-https://github.com/colmap/colmap
-
----
 
 ## Dataset Availability
 
