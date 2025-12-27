@@ -1,7 +1,7 @@
 # Long-term Monitoring of Damage Progression
 
 This repository provides a research-oriented implementation for long-term monitoring of surface damage progression on bridges using temporal UAV images.
-The workflow integrates hierarchical localization, structure-from-motion (SfM), and YOLOv8-based damage segmentation to enable consistent damage identification and tracking across different inspection times.
+The workflow integrates YOLOv8-based damage segmentation, structure-from-motion (SfM), and hierarchical localization to enable consistent damage identification and tracking across different inspection times.
 
 
 
