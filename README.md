@@ -4,6 +4,7 @@ This repository provides a research-oriented implementation for long-term monito
 The workflow integrates hierarchical localization, structure-from-motion (SfM), and YOLOv8-based damage segmentation to enable consistent damage identification and tracking across different inspection times.
 
 
+
 ## Overview
 
 The proposed framework aims to localize and quantify surface damage progression by aligning UAV images captured at different times into a common spatial reference.
@@ -86,6 +87,7 @@ Hierarchical Localization (hloc):
 https://github.com/cvg/Hierarchical-Localization
 
 ---
+
 
 
 ## Dataset Availability
