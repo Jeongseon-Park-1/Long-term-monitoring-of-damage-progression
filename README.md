@@ -17,6 +17,7 @@ This repository focuses on providing code, configuration files, and representati
 
 ## Repository Structure
 
+```
 Long-term-monitoring-of-damage-progression/
 │
 ├─ Images/
@@ -31,7 +32,7 @@ Long-term-monitoring-of-damage-progression/
 │   └─ data/data.yaml
 │
 └─ README.md
-
+```
 
 - **Images/**: Representative UAV images acquired from routine inspections  
 - **Instance_segmentation/**: YOLOv8-based damage segmentation scripts  
