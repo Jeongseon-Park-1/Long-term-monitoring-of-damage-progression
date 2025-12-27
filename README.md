@@ -39,6 +39,7 @@ Long-term-monitoring-of-damage-progression/
 - **Instance_segmentation/**: YOLOv8-based damage segmentation scripts  
 
 Due to repository size limitations, only representative sample images are included.  
+
 The full dataset will be provided after further discussion.
 
 
@@ -93,5 +94,8 @@ https://github.com/cvg/Hierarchical-Localization
 ## Dataset Availability
 
 The UAV images used in this study were captured from an operational prestressed concrete girder bridge at multiple inspection times.  
+
 Only representative samples are included in this repository due to size limitations.
+
+The full dataset will be provided after further discussion.
 
