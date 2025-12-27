@@ -12,7 +12,7 @@ The key components of the pipeline are:
 
 1. YOLOv8-based damage segmentation for identifying surface damage regions such as cracks, spalling, and water leakage
 2. COLMAP-based SfM for geometric reconstruction and spatial consistency
-3. Hierarchical localization (hloc) for robust camera pose estimation under appearance changes
+3. Hloc for robust camera pose estimation under appearance changes
 
 This repository focuses on providing code, configuration files, and representative sample images.
 
