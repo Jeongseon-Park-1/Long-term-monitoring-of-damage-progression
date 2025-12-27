@@ -3,20 +3,20 @@
 This repository provides a research-oriented implementation for long-term monitoring of surface damage progression on bridges using temporal UAV images.
 The workflow integrates hierarchical localization, structure-from-motion (SfM), and YOLOv8-based damage segmentation to enable consistent damage identification and tracking across different inspection times.
 
+
 ## Overview
 
 The proposed framework aims to localize and quantify surface damage progression by aligning UAV images captured at different times into a common spatial reference.
 The key components of the pipeline are:
 
-Hierarchical localization (hloc) for robust camera pose estimation under appearance changes
-
-COLMAP-based SfM for geometric reconstruction and spatial consistency
-
-YOLOv8-based damage segmentation for identifying surface damage regions such as cracks, spalling, and water leakage
+1. YOLOv8-based damage segmentation for identifying surface damage regions such as cracks, spalling, and water leakage
+2. COLMAP-based SfM for geometric reconstruction and spatial consistency
+3. Hierarchical localization (hloc) for robust camera pose estimation under appearance changes
 
 This repository focuses on providing code, configuration files, and representative sample images.
 
 ## Repository Structure
+
 Long-term-monitoring-of-damage-progression/
 │
 ├─ Images/
@@ -26,19 +26,21 @@ Long-term-monitoring-of-damage-progression/
 │   ├─ Query_4/
 │   └─ Reference/
 │
-├─ Instance segmentation/
+├─ Instance_segmentation/
 │   ├─ train_seg.py
 │   └─ data/data.yaml
 │
 └─ README.md
 
 
-Images/: Representative UAV images acquired from routine inspection
+- **Images/**: Representative UAV images acquired from routine inspections  
+- **Instance_segmentation/**: YOLOv8-based damage segmentation scripts  
 
-Instance segmentation/: YOLOv8-based damage segmentation scripts
+Due to repository size limitations, only representative sample images are included.  
+The full dataset will be provided after further discussion.
 
-Due to repository size limitations, only representative sample images are included.
-The full dataset is provided via an external repository.
+
+
 
 Damage Segmentation (YOLOv8)
 
