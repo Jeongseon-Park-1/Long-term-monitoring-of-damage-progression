@@ -42,53 +42,53 @@ The full dataset will be provided after further discussion.
 
 
 
+## Methods Overview
 
-Damage Segmentation (YOLOv8)
+### Damage Segmentation (YOLOv8)
 
-Damage regions are identified using a YOLOv8-based segmentation model, trained to detect multiple damage types commonly observed on concrete bridge surfaces.
+Surface damage regions are identified using a **YOLOv8-based instance segmentation model** trained to detect damage types commonly observed on concrete bridge surfaces.
 
-Model: YOLOv8-seg
+- **Model**: YOLOv8-seg  
+- **Damage types**: crack, spalling, water leakage  
+- **Output**: pixel-wise segmentation masks  
 
-Damage types: crack, spalling, water leakage
-
-Output: pixel-wise segmentation masks
-
-🔗 YOLOv8 (Ultralytics)
+YOLOv8 (Ultralytics):  
 https://github.com/ultralytics/ultralytics
 
-Hierarchical Localization
+---
 
-To achieve robust camera pose estimation across long-term inspections with significant appearance changes, hierarchical localization (hloc) is employed.
+### Hierarchical Localization
 
-The pipeline combines:
+To achieve robust camera pose estimation across long-term inspections with significant appearance changes, **hierarchical localization (hloc)** is employed.
 
-Global image retrieval
+The localization pipeline integrates:
+- Global image retrieval  
+- Local feature matching  
+- Geometric verification  
 
-Local feature matching
+This approach enables reliable localization under varying illumination, viewpoint, and surface conditions.
 
-Geometric verification
-
-This enables reliable localization even under varying illumination, viewpoint, and surface conditions.
-
-🔗 Hierarchical Localization (hloc)
+Hierarchical Localization (hloc):  
 https://github.com/cvg/Hierarchical-Localization
 
-Structure-from-Motion (COLMAP)
+---
 
-COLMAP is used to reconstruct the 3D geometry of the bridge and to maintain spatial consistency between images captured at different times.
+### Structure-from-Motion (COLMAP)
+
+**COLMAP** is used to reconstruct the 3D geometry of the bridge and to maintain spatial consistency between UAV images captured at different inspection times.
 
 The reconstructed SfM model provides:
+- Camera poses  
+- Sparse point clouds  
+- A shared reference frame for damage comparison  
 
-Camera poses
-
-Sparse point clouds
-
-A shared reference frame for damage comparison
-
-🔗 COLMAP
+COLMAP:  
 https://github.com/colmap/colmap
 
-Dataset Availability
+---
 
-The UAV images used in this study were captured from an operational prestressed concrete girder bridge at multiple inspection times.
-Only representative samples are included in this repository.
+## Dataset Availability
+
+The UAV images used in this study were captured from an operational prestressed concrete girder bridge at multiple inspection times.  
+Only representative samples are included in this repository due to size limitations.
+
