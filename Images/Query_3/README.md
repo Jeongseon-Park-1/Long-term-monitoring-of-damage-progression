@@ -1,1 +1,1 @@
-Examples of Query_3 dataset
+Examples of query_3 dataset
