@@ -19,12 +19,9 @@ you can skip Step 1 and start directly from Step 2.
 run("Scripts/Step2_SimilarityIndex/Step2.m")
 ```
 
-# ⚠️ Requirements ⚠️
+# Requirements
 
 - MATLAB R2024b
-- Git LFS (required for large files)
-
-Before running the demo, make sure Git LFS files are downloaded:
 
 # Folder Structure
 
