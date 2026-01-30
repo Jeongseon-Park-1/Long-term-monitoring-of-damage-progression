@@ -32,66 +32,53 @@ This repository focuses on providing:
 
 ```
 Long-term-monitoring-of-damage-progression/
-│ 
+│
 ├─ Demo/
-│ ├─ Data/
-│ │ ├─ Images/
-│ │ │ ├─ Reference/
-│ │ │ ├─ Query_1/
-│ │ │ ├─ Query_3/
-│ │ │ └─ Segmentation_mask/
-│ │ │
-│ │ ├─ Initial_inspection_data/
-│ │ ├─ Routine_inspection1_data/
-│ │ ├─ Routine_inspection2_data/
-│ │ │  ├─ SfM/
-│ │ │  ├─ cameras.txt
-│ │ │  ├─ images.txt
-│ │ │  └─ Dense/
-│ │ │  │  ├─ images/
-│ │ │  │  ├─ sparse/
-│ │ └─ └─ └─ stereo/
-│ │
-│ │
-│ ├─ Hierarchical-Localization/
-│ │ └─ (Official hloc repository cloned as a submodule)
-│ │
-│ │
-│ ├─ Scripts/
-│ │ ├─ Helper/
-│ │ │ ├─ saveCameraIntrinsics.m
-│ │ │ ├─ saveCameraExtrinsics.m
-│ │ │ ├─ saveDepthMaps.m
-│ │ │ ├─ saveMaskCoords.m
-│ │ │ ├─ Query2Ref.m
-│ │ │ ├─ EstimatePlane.m
-│ │ │ └─ updateDepthMap.m
-│ │ └─ run_demo.m
-│ │
-│ └─ README.md
-│
-│
-│ │ ├─ Images/
-│ │ │ ├─ Reference/
-│ │ │ ├─ Query_1/
-│ │ │ ├─ Query_2/
-│ │ │ ├─ Query_3/
-│ │ │ └─ Query_4/
-│
+│  ├─ Scripts/
+│  │  ├─ Helper/                    # Shared MATLAB utility functions
+│  │  │
+│  │  ├─ Step1_CameraPoseEstimation/
+│  │  │  ├─ Data/                   
+│  │  │  ├─ extend.py
+│  │  │  └─ README.md
+│  │  │
+│  │  ├─ Step2_SimilarityIndex/
+│  │  │  ├─ Helper/
+│  │  │  ├─ Segmentation_mask/      
+│  │  │  ├─ Step2.m
+│  │  │  ├─ workspace_step2.mat
+│  │  │  └─ README.md
+│  │  │
+│  │  ├─ Step3_Visualization/
+│  │  │  ├─ Helper/
+│  │  │  ├─ Step3.m
+│  │  │  └─ README.md
+│  │  │
+│  │  └─ Step4_Quantification/
+│  │     ├─ Helper/
+│  │     ├─ Step4.m
+│  │     └─ README.md
+│  │
+│  └─ README.md                     # Demo-level instructions
 │
 ├─ Instance_segmentation/
-│ ├─ train_seg.py
-│ └─ data/data.yaml
+│  ├─ train_seg.py                  # YOLOv8 training script
+│  └─ data/
+│     └─ data.yaml
 │
+├─ README.md                        # Project overview
+├─ .gitattributes
+└─ .gitignore
 ```
 
-- **Data/**: Example data and reconstructed results for demo purposes    
-- **Scripts/**: MATLAB functions for visualization and quantification of the surface damage  
-- **run_demo.m**: One-click demo script for visualization and quantification  
-
-- **Images/**: Representative sample images are included.
-
-- **Instance_segmentation/**: Codes for model training are included.
+- Demo/: Step-by-step demo pipeline for visualization and quantitative analysis of surface damage progression.
+- Demo/Scripts/: MATLAB scripts implementing the core workflow from camera pose estimation to damage quantification.
+- Demo/Scripts/Helper/: Shared MATLAB utility functions for coordinate transformation, depth handling, plane estimation, and visualization.
+- Step1_CameraPoseEstimation/: Preparation of camera poses and geometric information based on SfM results.
+- Step2_SimilarityIndex/: Similarity index computation and selection of corresponding reference–query image pairs.
+- Step3_Visualization/: Projection and visualization of segmented damage regions across different inspection times.
+- Step4_Quantification/: Quantitative measurement of damage attributes based on the projected results.
+- Instance_segmentation/: Training scripts and configuration files for the YOLOv8-based damage instance segmentation model.
 
 ---
 
