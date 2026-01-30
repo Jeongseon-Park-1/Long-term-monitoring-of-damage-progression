@@ -1,4 +1,4 @@
-# Demo: Damage Tracking Pipeline
+# Demo: Reproducible Damage Quantification Pipeline
 
 
 This folder provides a minimal, reproducible demo of the proposed damage
@@ -12,12 +12,9 @@ to similarity-based image pairing and damage quantification.
 # ⚠️ Quick Start (Recommended)
 
 This demo already includes all intermediate results required for Step 2 and later.
-If the goal is to reproduce the similarity index and quantification results,
-you can skip Step 1 and start directly from Step 2.
+If the goal is to reproduce the qualitative and quantification results,
+            **you can skip Step 1 and start directly from Step 2.**
 
-```matlab
-run("Scripts/Step2_SimilarityIndex/Step2.m")
-```
 
 # Requirements
 
@@ -68,4 +65,3 @@ Step 4: Quantification
 - All image data and large intermediate files are tracked using Git LFS.
 - The demo dataset is a representative subset used only for demonstration.
 - File paths in the scripts are relative to the Demo directory.
-
