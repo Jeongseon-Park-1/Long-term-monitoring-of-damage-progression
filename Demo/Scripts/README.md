@@ -1,4 +1,4 @@
-# Demo: Reproducible Damage Quantification Pipeline
+# Demo: Damage Monitoring Pipeline
 
 
 This folder provides a minimal, reproducible demo of the proposed damage
@@ -69,6 +69,7 @@ Step 4: Quantification
 - All image data and large intermediate files are tracked using Git LFS.
 - The demo dataset is a representative subset used only for demonstration.
 - File paths in the scripts are relative to the Demo directory.
+
 
 
 
