@@ -1,6 +1,6 @@
-### Step 2: Similarity Index
+# Step 2: Similarity Index
 
-## Overview
+# Overview
 
 This step identifies the most relevant reference image for each query image that contains detected damage.
 
@@ -10,13 +10,13 @@ The reference image that receives the largest number of valid projected pixels i
 
 This process enables robust association between query images and reference images captured from similar viewpoints, even under variations in camera position and inspection time.
 
-## Dependency
+# Dependency
 
 The authors used the following environment:
 
 - MATLAB R2024b
 
-## Method
+# Method
 
 1. Add all subfolders under the `Demo` directory to the MATLAB path so that all helper functions can be accessed.
 
@@ -34,7 +34,7 @@ This file includes the required variables for Step 2, such as:
 - camera extrinsic parameters
 - depthmaps
 
-# (Optional) Rebuild the workspace from raw reconstruction outputs
+## (Optional) Rebuild the workspace from raw reconstruction outputs
 
 The following steps are required only when reproducing the pipeline from scratch using the full reconstruction data from Step 1.
 
