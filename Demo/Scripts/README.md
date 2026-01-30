@@ -19,57 +19,12 @@ you can skip Step 1 and start directly from Step 2.
 run("Scripts/Step2_SimilarityIndex/Step2.m")
 ```
 
-Downloading Large Files (Git LFS)
-
-This repository uses Git Large File Storage (Git LFS) to manage large files such as images and MATLAB workspace files.
-
-1. Install Git LFS
-
-Before cloning the repository, install Git LFS:
-
-```bash
-git lfs install
-```
-- Git LFS: https://git-lfs.github.com/
-
-2. Clone the Repository
-
-Clone the repository as usual:
-```bash
-git clone https://github.com/Jeongseon-Park-1/Long-term-monitoring-of-damage-progression.git
-cd Long-term-monitoring-of-damage-progression
-```
-
-Git LFS will automatically download tracked large files during cloning.
-
-3. If Large Files Are Missing (Manual Fetch)
-
-If large files (e.g., .jpg, .mat) are not downloaded automatically, run:
-
-```bash
-git lfs pull
-```
-To verify which files are managed by Git LFS:
-
-```bash
-git lfs ls-files
-```
-- Large reconstruction artifacts (e.g., SfM intermediate files, databases, depth maps) are intentionally excluded to keep the repository lightweight.
-
-- Only essential images and workspace files required for reproducing the demo pipeline are included via Git LFS.
-
-
 # ⚠️ Requirements ⚠️
 
 - MATLAB R2024b
 - Git LFS (required for large files)
 
 Before running the demo, make sure Git LFS files are downloaded:
-
-```bash
-git lfs install
-git lfs pull
-```
 
 # Folder Structure
 
