@@ -1,0 +1,118 @@
+# Demo: Reproducible Damage Quantification Pipeline
+
+
+This folder provides a minimal, reproducible demo of the proposed damage
+localization and quantification pipeline used in the paper.
+
+The demo is organized as a step-by-step workflow, from camera pose estimation
+to similarity-based image pairing and damage quantification.
+
+---
+
+# ⚠️ Quick Start (Recommended)
+
+This demo already includes all intermediate results required for Step 2 and later.
+If the goal is to reproduce the similarity index and quantification results,
+you can skip Step 1 and start directly from Step 2.
+
+```matlab
+run("Scripts/Step2_SimilarityIndex/Step2.m")
+```
+
+Downloading Large Files (Git LFS)
+
+This repository uses Git Large File Storage (Git LFS) to manage large files such as images and MATLAB workspace files.
+
+1. Install Git LFS
+
+Before cloning the repository, install Git LFS:
+
+```bash
+git lfs install
+```
+- Git LFS: https://git-lfs.github.com/
+
+2. Clone the Repository
+
+Clone the repository as usual:
+```bash
+git clone https://github.com/Jeongseon-Park-1/Long-term-monitoring-of-damage-progression.git
+cd Long-term-monitoring-of-damage-progression
+```
+
+Git LFS will automatically download tracked large files during cloning.
+
+3. If Large Files Are Missing (Manual Fetch)
+
+If large files (e.g., .jpg, .mat) are not downloaded automatically, run:
+
+```bash
+git lfs pull
+```
+To verify which files are managed by Git LFS:
+
+```bash
+git lfs ls-files
+```
+- Large reconstruction artifacts (e.g., SfM intermediate files, databases, depth maps) are intentionally excluded to keep the repository lightweight.
+
+- Only essential images and workspace files required for reproducing the demo pipeline are included via Git LFS.
+
+
+# ⚠️ Requirements ⚠️
+
+- MATLAB R2024b
+- Git LFS (required for large files)
+
+Before running the demo, make sure Git LFS files are downloaded:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+# Folder Structure
+
+Demo/
+ ├─ Scripts/
+ │   ├─ Step1_CameraPoseEstimation/
+ │   ├─ Step2_SimilarityIndex/
+ │   ├─ Step3_Visualization/
+ │   └─ Step4_Quantification/
+
+
+# Step Overview
+
+Step 1: Camera Pose Estimation
+
+- Registers reference and query images using hloc and COLMAP
+- Estimates camera intrinsics, extrinsics, and depth maps
+
+📁 Scripts/Step1_CameraPoseEstimation/
+
+Step 2: Similarity Index
+
+- Projects damaged pixels from query images into all reference images
+- Selects the reference image with the largest number of valid projections
+- Generates query–reference image pairs
+
+📁 Scripts/Step2_SimilarityIndex/
+
+Step 3: Visualization
+
+- Visualizes projected damage regions on the selected reference images
+
+📁 Scripts/Step3_Visualization/
+
+Step 4: Quantification
+
+- Estimates damage area and geometric metrics in 3D
+- Uses depth maps and plane fitting for metric quantification
+
+📁 Scripts/Step4_Quantification/
+
+# Notes
+
+- All image data and large intermediate files are tracked using Git LFS.
+- The demo dataset is a representative subset used only for demonstration.
+- File paths in the scripts are relative to the Demo directory.
