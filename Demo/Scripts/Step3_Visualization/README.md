@@ -1,6 +1,6 @@
-### Step 3: Visualization
+# Step 3: Visualization
 
-## Overview
+# Overview
 
 This step visualizes the spatial relationship between query images with detected damage and their paired reference images.
 
@@ -9,13 +9,13 @@ Damage regions from different inspection times are overlaid with transparency, a
 
 This visualization allows intuitive inspection of damage location consistency, spatial overlap, and viewpoint similarity across inspections.
 
-## Dependency
+# Dependency
 
 The authors used the following environment:
 
 - MATLAB R2024b
 
-## Method
+# Method
 
 ```matlab
 run("Scripts\Step3_Visualization\Step3.m")
