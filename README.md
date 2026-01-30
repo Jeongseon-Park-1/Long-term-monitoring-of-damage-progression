@@ -17,8 +17,8 @@ The proposed framework aims to visualize and quantify the progression of surface
 
 The core components of the pipeline are:
 
-1. **Qualitative damage assessment** based on instance segmentation  
-2. **Quantitative damage assessment** via damage area analysis
+1. **Qualitative damage assessment** 
+2. **Quantitative damage assessment** 
 
 
 This repository focuses on providing:
