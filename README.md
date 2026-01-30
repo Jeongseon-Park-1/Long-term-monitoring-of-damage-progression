@@ -9,6 +9,10 @@ This repository is intended to support **reproducibility, transparency, and meth
 
 ## Overview
 
+<p align="center">
+  <img src="dd_orig.png" width="900">
+</p>
+
 The proposed framework aims to visualize and quantify the progression of surface damage through coordinate transformation of UAV imagery acquired from different inspection times.
 
 The core components of the pipeline are:
