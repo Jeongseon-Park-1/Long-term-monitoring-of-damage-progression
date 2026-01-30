@@ -1,0 +1,6 @@
+## train: [data route]
+## val: [data route]
+## test: [data route]
+
+nc: 3  
+names: [ 'crack', 'leaking', 'spalling']
