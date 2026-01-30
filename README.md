@@ -155,7 +155,7 @@ Representative sample images required to run the demo pipeline are included in t
 The full set of **initial inspection images** and **routine inspection images** used in this study are available via an external cloud storage link due to their large size:
 
 - Dropbox (Initial and Routine Inspection Images):  
-  https://www.dropbox.com/scl/fo/g4ahvivb0yth20ewehwgr/AJEZW_NpcgJocoW_Zm26j30?rlkey=rw2mhq2nev4nq5zln90ptqxge&st=q6v1whd5&dl=0 
+  https://www.dropbox.com/scl/fo/q7bwqp7p9c518nk4m75la/APhOIji1YLeFGjTYBgRrPfo?rlkey=vxl586fzcstyfbl2u9bft0ioo&st=k2bgkbqd&dl=0
 
 These images are provided to support transparency and reproducibility of the proposed pipeline.  
 Researchers interested in accessing the complete dataset for academic purposes may also contact the authors.
