@@ -9,12 +9,15 @@ to similarity-based image pairing and damage quantification.
 
 ---
 
-# ⚠️ Quick Start (Recommended)
+# ⚠️ Quick Start (Recommended) ⚠️
 
 This demo already includes all intermediate results required for Step 2 and later.
 If the goal is to reproduce the qualitative and quantification results,
+           
+            
+            ```
             **you can skip Step 1 and start directly from Step 2.**
-
+           ```
 
 # Requirements
 
@@ -22,13 +25,14 @@ If the goal is to reproduce the qualitative and quantification results,
 
 # Folder Structure
 
+```
 Demo/
  ├─ Scripts/
  │   ├─ Step1_CameraPoseEstimation/
  │   ├─ Step2_SimilarityIndex/
  │   ├─ Step3_Visualization/
  │   └─ Step4_Quantification/
-
+```
 
 # Step Overview
 
