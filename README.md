@@ -17,14 +17,9 @@ The proposed framework aims to visualize and quantify the progression of surface
 
 The core components of the pipeline are:
 
-1. **Damage segmentation**  
-   YOLOv8-based instance segmentation for identifying surface damage regions such as cracks, spalling, and water leakage.
+1. **Qualitative damage assessment** based on instance segmentation  
+2. **Quantitative damage assessment** via damage area analysis
 
-2. **Geometric reconstruction**  
-   COLMAP-based SfM for reconstructing camera poses and 3D geometry, providing spatial consistency between inspections.
-
-3. **Robust localization of the time series images**  
-   Hierarchical localization (hloc) for camera pose estimation under significant appearance changes.
 
 This repository focuses on providing:
 - Source code    
