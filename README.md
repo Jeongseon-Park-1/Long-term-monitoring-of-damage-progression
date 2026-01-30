@@ -9,7 +9,6 @@ to achieve **consistent damage detection, spatial alignment, and quantitative co
 Rather than focusing on large-scale benchmarking, this repository emphasizes:
 
 - **Reproducibility** of the proposed workflow  
-- **Transparency** of the geometric and analytical processes  
 - **Clear methodological understanding** for research-oriented use  
 
 This implementation is intended to serve as a **lightweight yet complete reference** for researchers interested in UAV-based, vision-driven long-term damage assessment of bridge structures.
