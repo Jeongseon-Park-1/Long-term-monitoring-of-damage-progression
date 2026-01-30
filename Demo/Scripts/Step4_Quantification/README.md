@@ -1,19 +1,19 @@
-### Step 4: Quantification
+# Step 4: Quantification
 
-## Overview
+# Overview
 
 This step quantitatively estimates the damage area from each query image using depth information and camera parameters.
 
 For each damage mask, pixel-wise depth values are used to estimate the local surface geometry.
 The physical area corresponding to each damaged pixel is computed and summed to obtain the total damage area.
 
-## Dependency
+# Dependency
 
 The authors used the following environment:
 
 - MATLAB R2024b
 
-## Method
+# Method
 
 ```matlab
 run("Scripts\Step4_Quantification\Step4.m")
