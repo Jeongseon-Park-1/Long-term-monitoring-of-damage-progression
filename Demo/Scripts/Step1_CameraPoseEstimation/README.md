@@ -1,7 +1,7 @@
-### Step 1: Camera Pose Estimation
+# Step 1: Camera Pose Estimation
 
 ---
-## ⚠️ Notice
+# ⚠️ Notice
 
 Rebuilding the workspace from raw reconstruction outputs is computationally expensive and time-consuming.
 For convenience, you may skip the full reconstruction process and proceed directly to Step 2 using the provided files in this repository.
@@ -9,7 +9,7 @@ For convenience, you may skip the full reconstruction process and proceed direct
 In this demo, all required variables for Step 2 are already stored in a pre-saved MATLAB workspace file, allowing immediate execution without repeating the earlier steps.
 ---
 
-## Overview
+# Overview
 
 This step defines a common coordinate system and estimates camera poses across different inspection times.
 
@@ -18,9 +18,9 @@ This step defines a common coordinate system and estimates camera poses across d
 
 ---
 
-## Dependencies
+# Dependencies
 
-# Environment
+## Environment
 
 The authors tested this pipeline under the following environment:
 
@@ -28,7 +28,7 @@ The authors tested this pipeline under the following environment:
 - Python 3.9.13  
 - CUDA Toolkit 12.8  
 
-# Hierarchical Localization (hloc)
+## Hierarchical Localization (hloc)
 
 Please install hloc separately:
 
@@ -41,7 +41,7 @@ git submodule update --init --recursive
 pip install -e .
 ```
 
-# COLMAP
+## COLMAP
 
 Install the COLMAP GUI from the official repository:
 https://github.com/colmap/colmap/releases 
@@ -52,7 +52,7 @@ COLMAP GUI is used for:
 - Running SfM reconstruction
 - Generating depth maps
 
-## Method
+# Method
 
 The following relative directory structure is assumed:
 
@@ -84,7 +84,7 @@ Step1_CameraPoseEstimation
    ...
 ```
 
-# Reference Image Registration (Initial Inspection)
+## Reference Image Registration (Initial Inspection)
 
 1. Store reference images in:
 
@@ -164,7 +164,7 @@ Hierarchical-Localization/hloc/
 - Generate depth maps using COLMAP GUI.
 
 
-# Query Image Registration (Routine Inspection)
+## Query Image Registration (Routine Inspection)
 
 The following procedure is applied to each query set (Query1, Query2, Query3, Query4).
 
