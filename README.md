@@ -151,44 +151,21 @@ The demo assumes that:
 - Similarity index has already been calculated
 - Scale conversion factor has already been calculated 
 
-### How to Run the Demo
-
-1. Open MATLAB and move to the repository root:
-```matlab
-cd path/to/Long-term-monitoring-of-damage-progression/Demo/Scripts
-```
-
-2. Run the demo:
-```matlab
-run_demo
-```
-
-## What the Demo Does
-
-The demo script automatically performs the following steps:
-
-- Loads camera intrinsics and extrinsics from COLMAP outputs
-  
-- Loads depth maps and segmentation masks
-  
-- Projects segmentation mask contours from query images to the reference image (Visualization)
-
-- Applies plane fitting to refine depth values within damage regions
-    
-- Computes pixel-based damage areas
-  
-- Converts pixel areas to physical areas using a scale conversion factor (Quantification)
-  
-- Displays all results in the MATLAB console
-
-The demo is intended for methodological understanding and reproducibility, not for performance benchmarking.
-
 
 ## Dataset Availability
 
 The UAV imagery used in this study were captured from an operational prestressed concrete girder bridge at different inspection times.
 
-The full dataset will be made available after further discussion.
+Representative sample images required to run the demo pipeline are included in this repository.
+
+The full set of **initial inspection images** and **routine inspection images** used in this study are available via an external cloud storage link due to their large size:
+
+- Dropbox (Initial and Routine Inspection Images):  
+  https://www.dropbox.com/scl/fo/g4ahvivb0yth20ewehwgr/AJEZW_NpcgJocoW_Zm26j30?rlkey=rw2mhq2nev4nq5zln90ptqxge&st=q6v1whd5&dl=0 
+
+These images are provided to support transparency and reproducibility of the proposed pipeline.  
+Researchers interested in accessing the complete dataset for academic purposes may also contact the authors.
+
 
 ## Acknowledgements
 
