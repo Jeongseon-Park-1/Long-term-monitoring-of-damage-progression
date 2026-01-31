@@ -1,8 +1,18 @@
-clc; 
+clc;
 
-imgFolder      = "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\SfM\Dense\images\";
-txtInputPath   = "Scripts\Step2_SimilarityIndex\Segmentation_mask\Damage_detected_images.txt";
-outputFileName = "Best_Match_Pairs.txt";
+thisDir = fileparts(mfilename("fullpath"));
+demoRoot = fileparts(fileparts(thisDir));      
+
+imgFolder = fullfile(demoRoot, ...
+    "Scripts","Step1_CameraPoseEstimation","Data", ...
+    "Routine_inspection4_data","SfM","Dense","images");
+
+txtInputPath = fullfile(demoRoot, ...
+    "Scripts","Step2_SimilarityIndex","Segmentation_mask", ...
+    "Damage_detected_images.txt");
+
+outputFileName = fullfile(thisDir, "Best_Match_Pairs.txt");
+
 alpha = 0.85; 
 
 fid = fopen(txtInputPath, 'r');
@@ -105,7 +115,7 @@ for g = 1:numel(uniqueGroups)
     end
 end
 
-fid = fopen(fullfile(pwd, outputFileName), 'w');
+fid = fopen(outputFileName, 'w');
 for i = 1:numel(Results)
     if Results(i).BestRef ~= "None"
         fprintf(fid, "%s %s\n", Results(i).Query, Results(i).BestRef);
