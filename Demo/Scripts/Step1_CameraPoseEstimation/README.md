@@ -222,7 +222,6 @@ After downloading, place the stereo directory at the following location:
 Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\SfM\Dense\stereo
 ```
 
-
 2. Copy the previously generated feature files:
 
 - feats-superpoint-n8192-rmax4000.h5  
