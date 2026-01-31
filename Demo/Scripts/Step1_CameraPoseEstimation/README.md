@@ -67,10 +67,6 @@ Step1_CameraPoseEstimation
 │ │ ├─ Query3/
 │ │ └─ Query4/
 │ │
-│ ├─ Initial_inspection_data/
-│ ├─ Routine_inspection1_data/
-│ ├─ Routine_inspection2_data/
-│ ├─ Routine_inspection3_data/
 │ ├─ Routine_inspection4_data/
 │
 ├─ extend.py
