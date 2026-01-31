@@ -95,5 +95,5 @@ The estimated scaleFactor converts SfM reconstruction units into physical units.
 SCF = scalefactor("Scripts\Step1_CameraPoseEstimation\Data\images\Reference");
 ```
  
-***For this demo, the scale factor has already been estimated and does not need to be recomputed.***
+***For this demo, the scale factor is entered in the quantification calculation.***
 
