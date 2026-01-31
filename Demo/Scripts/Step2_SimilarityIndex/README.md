@@ -34,6 +34,21 @@ This file includes the required variables for Step 2, such as:
 - camera extrinsic parameters
 - depthmaps
 
+3. Run Step2.m to compute the similarity index and generate query–reference pairs.
+
+```matlab
+run("Scripts\Step2_SimilarityIndex\Step2.m")
+```
+
+What Step2.m does:
+- reads damage masks for query images
+- projects damaged pixels from each query into all reference images
+- counts valid projected pixels per reference image
+- selects the reference image with the maximum count
+- writes the best match as a query–reference pair (e.g., Best_Match_Pairs.txt)
+
+---
+
 ## (Optional) Rebuild the workspace from raw reconstruction outputs
 
 The following steps are required only when reproducing the pipeline from scratch using the full reconstruction data from Step 1.
@@ -82,15 +97,3 @@ SCF = scalefactor("Scripts\Step1_CameraPoseEstimation\Data\images\Reference");
  
 ***For this demo, the scale factor has already been estimated and does not need to be recomputed.***
 
-3. Run Step2.m to compute the similarity index and generate query–reference pairs.
-
-```matlab
-run("Scripts\Step2_SimilarityIndex\Step2.m")
-```
-
-What Step2.m does:
-- reads damage masks for query images
-- projects damaged pixels from each query into all reference images
-- counts valid projected pixels per reference image
-- selects the reference image with the maximum count
-- writes the best match as a query–reference pair (e.g., Best_Match_Pairs.txt)
