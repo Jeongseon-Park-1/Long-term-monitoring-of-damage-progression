@@ -1,15 +1,28 @@
 clc;
 gamma = 1.0; 
 numMasks = numel(globalMasks);
-results = struct('FileName', {}, 'DamageArea_cm2', {});
+results = struct('FileName', {}, 'RefName', {}, 'DamageArea_cm2', {});
+thisDir  = fileparts(mfilename("fullpath"));
+demoRoot = fileparts(fileparts(thisDir));
+pairPath = fullfile(demoRoot, "Scripts","Step2_SimilarityIndex","Best_Match_Pairs.txt");
+fidp = fopen(pairPath, 'r');
+if fidp == -1, error("File not found: %s", pairPath); end
+pairs = textscan(fidp, '%s %s'); fclose(fidp);
+pairQ = string(pairs{1}); pairR = string(pairs{2});
+pairQ = lower(pairQ); pairR = lower(pairR);
 
 for k = 1:numMasks
-    qFile = globalMasks(k).filename;
+    qFile = string(globalMasks(k).filename);
+    qFile_l = lower(qFile);
     [~, qBase] = fileparts(qFile);
+
+    hit = find(pairQ == qFile_l, 1);
+    if isempty(hit), continue; end
+    refForThis = pairR(hit);
     
-    K_names = lower(string({CameraIntParams.image_name}));
+    K_names  = lower(string({CameraIntParams.image_name}));
     dm_names = lower(string({Depthmaps.FileName}));
-    
+     
     Kq = CameraIntParams(K_names == lower(qFile));
     idxDq = find(contains(dm_names, lower(qBase)), 1);
     
@@ -52,28 +65,41 @@ for k = 1:numMasks
     end
     
     results(k).FileName = qFile;
+    results(k).RefName = refForThis;
     results(k).DamageArea_cm2 = total_area_cm2;
     
     fprintf('[%d/%d] %s: %.6f (cm^2)\n', k, numMasks, qFile, total_area_cm2);
 end
 
-areaValues = [results.DamageArea_cm2];
-fileLabels = {results.FileName};
+validRes = ~arrayfun(@(s) isempty(s.FileName), results);
+results = results(validRes);
 
-figure('Color', 'w', 'Name', 'Damage Area Quantification (cm^2)');
-b = bar(areaValues, 'FaceColor', [0.75 0.15 0.15]);
-grid on;
-ylabel('Damage Area (cm^2)', 'FontSize', 12, 'FontWeight', 'bold');
-xlabel('Image Index', 'FontSize', 12, 'FontWeight', 'bold');
-title('Quantified Damage Area in cm^2', 'FontSize', 14);
+refList = string({results.RefName});
+uniqR = unique(refList);
 
-xtips = b.XEndPoints;
-ytips = b.YEndPoints;
-labels = compose("%.6f", areaValues);
-text(xtips, ytips, labels, 'HorizontalAlignment', 'center', ...
-    'VerticalAlignment', 'bottom', 'FontSize', 9, 'FontWeight', 'bold');
+for rr = 1:numel(uniqR)
+    tr = uniqR(rr);
+    idx = find(refList == tr);
 
-set(gca, 'XTick', 1:numMasks, 'XTickLabel', fileLabels, 'XTickLabelRotation', 45);
+    areaValues = [results(idx).DamageArea_cm2];
+    fileLabels = {results(idx).FileName};
+
+    figure('Color','w','Name', sprintf("Damage Area (cm^2) | Ref: %s", tr));
+    b = bar(areaValues, 'FaceColor', [0.75 0.15 0.15]);
+    grid on;
+    ylabel('Damage Area (cm^2)', 'FontSize', 12, 'FontWeight', 'bold');
+    xlabel('Query Index', 'FontSize', 12, 'FontWeight', 'bold');
+    title(sprintf('Quantified Damage Area (Ref: %s)', tr), 'FontSize', 14);
+
+    xtips = b.XEndPoints;
+    ytips = b.YEndPoints;
+    labels = compose("%.6f", areaValues);
+    text(xtips, ytips, labels, 'HorizontalAlignment','center', ...
+        'VerticalAlignment','bottom', 'FontSize', 9, 'FontWeight','bold');
+
+    set(gca, 'XTick', 1:numel(areaValues), 'XTickLabel', fileLabels, 'XTickLabelRotation', 45);
+end
+
 
 function [model, inliers] = ransacfitplane_step4(pts, threshold)
     numPts = size(pts, 2);
