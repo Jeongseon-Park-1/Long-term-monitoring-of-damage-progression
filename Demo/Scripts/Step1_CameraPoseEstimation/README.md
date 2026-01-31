@@ -286,6 +286,15 @@ python -m hloc.extend \
 - Continue reconstruction
 - Generate depth maps for newly added images
 
+Note:
+Due to GitHub storage limitations, the pre-generated depthmaps are provided via an external link (e.g., Dropbox).
+
+
+After downloading, place the stereo directory at the following location:
+
+```
+Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\SfM\Dense\stereo
+```
 
 9. Export the reconstructed COLMAP model in text format and save it under:
 
