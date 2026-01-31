@@ -9,7 +9,7 @@ The physical area corresponding to each damaged pixel is computed and summed to 
 
 # Example result
 <p align="center">
-  <img src="Scripts/Step4_Quantification/result.png" width="48%">
+  <img src="result.png" width="600">
 </p>
 
 # Dependency
