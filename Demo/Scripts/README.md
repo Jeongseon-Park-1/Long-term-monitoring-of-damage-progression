@@ -9,13 +9,6 @@ to similarity-based image pairing and damage quantification.
 
 ---
 
-# Environment
-
-- Operating System: Windows 11
-- Python: 3.9.13
-- CUDA Toolkit: 12.8
-- MATLAB: R2024b
-
 # ⚠️ Quick Start (Recommended) ⚠️
 
 This demo already includes all intermediate results required for Step 2 and later.
@@ -25,6 +18,14 @@ If the goal is to reproduce the qualitative and quantification results,
 ```
                                  you can skip Step 1 and start directly from Step 2.
 ```
+
+# Environment
+
+The authors performed in the following environments:
+- OS: Windows 11
+- Python: 3.9.13
+- CUDA Toolkit: 12.8
+- MATLAB: R2024b
 
 # Folder Structure
 
@@ -72,6 +73,7 @@ Step 4: Quantification
 - All image data and large intermediate files are tracked using Git LFS.
 - The demo dataset is a representative subset used only for demonstration.
 - File paths in the scripts are relative to the Demo directory.
+
 
 
 
