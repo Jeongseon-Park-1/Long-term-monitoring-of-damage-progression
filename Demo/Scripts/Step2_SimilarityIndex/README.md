@@ -80,7 +80,7 @@ SCF = scalefactor("Scripts\Step1_CameraPoseEstimation\Data\images\Reference");
 ```
 
 The estimated scaleFactor converts SfM reconstruction units into physical units. 
-** For this demo, the scale factor has already been estimated and does not need to be recomputed. **
+***For this demo, the scale factor has already been estimated and does not need to be recomputed.***
 
 3. Run Step2.m to compute the similarity index and generate query–reference pairs.
 
