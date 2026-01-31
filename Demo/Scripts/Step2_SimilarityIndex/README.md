@@ -74,12 +74,12 @@ saveCameraExtrinsics( ...
 ### Scale conversion factor
 
 A physical scale factor can be estimated by aligning the distribution of camera optical centers (from extrinsics) with the corresponding image GPS positions using a Procrustes-based similarity transform.
+The estimated scaleFactor converts SfM reconstruction units into physical units.
 
 ```matlab
 SCF = scalefactor("Scripts\Step1_CameraPoseEstimation\Data\images\Reference");
 ```
-
-The estimated scaleFactor converts SfM reconstruction units into physical units. 
+ 
 ***For this demo, the scale factor has already been estimated and does not need to be recomputed.***
 
 3. Run Step2.m to compute the similarity index and generate query–reference pairs.
