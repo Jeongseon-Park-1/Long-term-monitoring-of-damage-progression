@@ -1,8 +1,17 @@
-clc; 
-imgFolder   = "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\SfM\Dense\images\";
-maskFolder  = "Scripts\Step2_SimilarityIndex\Segmentation_mask\";
-pairPath    = "Scripts\Step2_SimilarityIndex\Best_Match_Pairs.txt";
+clc;
 
+thisDir  = fileparts(mfilename("fullpath"));    
+demoRoot = fileparts(fileparts(thisDir));        
+
+imgFolder  = fullfile(demoRoot, ...
+    "Scripts","Step1_CameraPoseEstimation","Data", ...
+    "Routine_inspection4_data","SfM","Dense","images");
+
+maskFolder = fullfile(demoRoot, ...
+    "Scripts","Step2_SimilarityIndex","Segmentation_mask");
+
+pairPath   = fullfile(demoRoot, ...
+    "Scripts","Step2_SimilarityIndex","Best_Match_Pairs.txt");
 fid = fopen(pairPath, 'r');
 pairs = textscan(fid, '%s %s'); fclose(fid);
 queryNames = string(pairs{1}); refNames = string(pairs{2});
@@ -48,7 +57,7 @@ for r = 1:numel(uniqueRefs)
         
         Dq_orig = Depthmaps(idxDq).DepthMap;
         [D_h, D_w] = size(Dq_orig);
-        maskIdx = find(string({globalMasks.filename}) == qFile, 1);
+        maskIdx = find(strcmpi({globalMasks.filename}, char(qFile)), 1);
         if isempty(maskIdx), continue; end
         
         currMask = imresize(globalMasks(maskIdx).mask, [D_h, D_w], 'nearest') > 0;
