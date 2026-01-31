@@ -196,7 +196,8 @@ Data/Images/Query4/
  ├─ sQuery3_0002.jpg
  ├─ ...
  ├─ sQuery4_0001.jpg
- └─ sQuery4_0002.jpg
+ ├─ sQuery4_0002.jpg
+ └─ ...
 ```
 
 1. Store both reference and query images in:
