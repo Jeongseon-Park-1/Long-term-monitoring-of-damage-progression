@@ -170,7 +170,7 @@ The following procedure applies to all routine inspection query sets.
 
 Example: Query4
 
-# ⚠️ Notice
+⚠️ Notice
 
 For the query set, the query image folder must include both:
 
