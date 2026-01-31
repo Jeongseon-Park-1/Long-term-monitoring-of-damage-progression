@@ -166,32 +166,42 @@ Hierarchical-Localization/hloc/
 
 ## Query Image Registration (Routine Inspection)
 
-The following procedure is applied to each query set (Query1, Query2, Query3, Query4).
+The following procedure applies to all routine inspection query sets.
 
-Example: Query1
+Example: Query4
 
 # ⚠️ Notice
 
-For each query set (e.g., Query1), the query folder must include both the new query images and the reference images used in the initial inspection.
-In other words, the reference images from the previous inspection should be copied into the query folder so that reference and query images coexist in the same directory during registration.
+For the query set, the query image folder must include both:
 
-Example (Query1):
+- The new query images captured during the Routine inspection, and
+- The reference images used in the initial inspection.
+
+This is required because query images are registered by extending the existing SfM model through shared reference images.
+
+Example (Query4):
 
 ```
-Data/Images/Query_1/
- ├─ Reference_01.jpg
- ├─ Reference_02.jpg
+Data/Images/Query4/
+ ├─ Ref_0001.jpg
+ ├─ Ref_0002.jpg
  ├─ ...
- ├─ S_query_1_1.jpg
- ├─ S_query_1_2.jpg
- └─ S_query_1_3.jpg
+ ├─ sQuery1_0001.jpg
+ ├─ sQuery1_0002.jpg
+ ├─ ...
+ ├─ sQuery2_0001.jpg
+ ├─ sQuery2_0002.jpg
+ ├─ ...
+ ├─ sQuery3_0001.jpg
+ ├─ sQuery3_0002.jpg
+ ├─ ...
+ ├─ sQuery4_0001.jpg
+ └─ sQuery4_0002.jpg
 ```
-
-This is required because the query images are registered by extending the existing SfM model using shared reference images.
 
 1. Store both reference and query images in:
 ```
-Data/Images/Query_1/
+Data/Images/Query4/
 ```
 Note:
 Copy the existing depth maps generated for the reference images from
@@ -200,7 +210,7 @@ Data/Initial_inspection_data/SfM/Dense/stereo/depth_maps
 ```
 to
 ```
-Data/Routine_inspection1_data/SfM/Dense/stereo/depth_maps
+Data/Routine_inspection4_data/SfM/Dense/stereo/depth_maps
 ```
 During this step, depth maps are generated only for newly added query images.
 
@@ -213,35 +223,35 @@ During this step, depth maps are generated only for newly added query images.
 
 into:
 ```
-Data/Routine_inspection1_data/
+Data/Routine_inspection4_data/
 ```
 
 3. Append local features:
 
 ```bash
 python -m hloc.extract_features \
-  --image_dir ../Data/Images/Query1 \
-  --export_dir ../Data/Routine_inspection1_data \
+  --image_dir ../Data/Images/Query4 \
+  --export_dir ../Data/Routine_inspection4_data \
   --conf superpoint_max \
-  --feature_path ../Data/Routine_inspection1_data/feats-superpoint-n8192-rmax4000.h5
+  --feature_path ../Data/Routine_inspection4_data/feats-superpoint-n8192-rmax4000.h5
 ```
 
 4. Append global features:
 
 ```bash
 python -m hloc.extract_features \
-  --image_dir ../Data/Images/Query1 \
-  --export_dir ../Data/Routine_inspection1_data \
+  --image_dir ../Data/Images/Query4 \
+  --export_dir ../Data/Routine_inspection4_data \
   --conf netvlad \
-  --feature_path ../Data/Routine_inspection1_data/global-feats-netvlad.h5
+  --feature_path ../Data/Routine_inspection4_data/global-feats-netvlad.h5
 ```
 
 5. Image retrieval:
 
 ```bash
 python -m hloc.pairs_from_retrieval \
-  --descriptors ../Data/Routine_inspection1_data/global-feats-netvlad.h5 \
-  --output ../Data/Routine_inspection1_data/pairs_5.txt \
+  --descriptors ../Data/Routine_inspection4_data/global-feats-netvlad.h5 \
+  --output ../Data/Routine_inspection4_data/pairs_5.txt \
   --num_matched 5
 ```
 
@@ -249,8 +259,8 @@ python -m hloc.pairs_from_retrieval \
 
 ```bash
 python -m hloc.match_features \
-  --pairs ../Data/Routine_inspection1_data/pairs_5.txt \
-  --export_dir ../Data/Routine_inspection1_data \
+  --pairs ../Data/Routine_inspection4_data/pairs_5.txt \
+  --export_dir ../Data/Routine_inspection4_data \
   --features feats-superpoint-n8192-rmax4000 \
   --conf superglue \
   --matches feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5
@@ -260,11 +270,11 @@ python -m hloc.match_features \
 
 ```bash
 python -m hloc.extend \
-  --sfm_dir ../Data/Routine_inspection1_data/SfM \
-  --image_dir ../Data/Images/Query1 \
-  --pairs ../Data/Routine_inspection1_data/pairs_5.txt \
-  --features ../Data/Routine_inspection1_data/feats-superpoint-n8192-rmax4000.h5 \
-  --matches ../Data/Routine_inspection1_data/feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5.h5 \
+  --sfm_dir ../Data/Routine_inspection4_data/SfM \
+  --image_dir ../Data/Images/Query4 \
+  --pairs ../Data/Routine_inspection4_data/pairs_5.txt \
+  --features ../Data/Routine_inspection4_data/feats-superpoint-n8192-rmax4000.h5 \
+  --matches ../Data/Routine_inspection4_data/feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5.h5 \
   --verify
 ```
 
@@ -275,11 +285,6 @@ python -m hloc.extend \
 - Continue reconstruction
 - Generate depth maps for newly added images
 
-Notes:
-The same procedure applies to:
-- Query2
-- Query3
-- Query4
 
 9. Export the reconstructed COLMAP model in text format and save it under:
 
