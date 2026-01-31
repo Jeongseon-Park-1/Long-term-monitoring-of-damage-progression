@@ -7,6 +7,11 @@ This step quantitatively estimates the damage area from each query image using d
 For each damage mask, pixel-wise depth values are used to estimate the local surface geometry.
 The physical area corresponding to each damaged pixel is computed and summed to obtain the total damage area.
 
+# Example result
+<p align="center">
+  <img src="Images/Step4_Quantification/result.png" width="48%">
+</p>
+
 # Dependency
 
 The authors used the following environment:
