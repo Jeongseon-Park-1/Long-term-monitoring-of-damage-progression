@@ -288,7 +288,7 @@ python -m hloc.extend \
 
 Note:
 Due to GitHub storage limitations, the pre-generated depthmaps are provided via an external link (e.g., Dropbox).
-
+- Dropbox (Depthmaps):   
 
 After downloading, place the stereo directory at the following location:
 
