@@ -168,7 +168,7 @@ Hierarchical-Localization/hloc/
 
 The following procedure applies to all routine inspection query sets.
 
-Example: Query4
+Example: Query1-4
 
 ⚠️ Notice
 
