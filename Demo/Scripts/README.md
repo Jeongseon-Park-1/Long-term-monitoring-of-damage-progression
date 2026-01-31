@@ -11,6 +11,12 @@ to similarity-based image pairing and damage quantification.
 
 # ⚠️ Quick Start (Recommended) ⚠️
 
+To quickly reproduce the qualitative visualizations and quantitative results reported in the paper, follow the steps below.
+
+```
+git clone https://github.com/Jeongseon-Park-1/Long-term-monitoring-of-damage-progression.git
+```
+
 This demo already includes all intermediate results required for Step 2 and later.
 If the goal is to reproduce the qualitative and quantification results,
            
@@ -73,6 +79,7 @@ Step 4: Quantification
 - All image data and large intermediate files are tracked using Git LFS.
 - The demo dataset is a representative subset used only for demonstration.
 - File paths in the scripts are relative to the Demo directory.
+
 
 
 
