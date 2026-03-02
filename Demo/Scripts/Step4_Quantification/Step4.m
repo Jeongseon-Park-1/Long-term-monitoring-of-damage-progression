@@ -60,12 +60,10 @@ for k = 1:numMasks
             delta_X = (gamma * s_hat / Kq.fx);
             delta_Y = (gamma * s_hat / Kq.fy);
 
-            SCF = 292.0689;
-            area_multiplier = (SCF / 10)^2;
+            SCF = 241.030117;
 
             pixel_areas = abs(delta_X .* delta_Y);
-            total_area_m2 = sum(pixel_areas) * area_multiplier;
-            total_area_cm2 = total_area_m2 * 100;
+            total_area_cm2 = sum(pixel_areas) * (SCF^2);
         else
             total_area_cm2 = 0;
         end
