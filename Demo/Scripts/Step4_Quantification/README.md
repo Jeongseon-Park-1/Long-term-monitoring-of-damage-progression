@@ -94,7 +94,7 @@ The following table compares the results from this GitHub demo against the origi
 </div>
 
 ⚠️ Technical Note on RANSAC Variability:
-Please note that minor discrepancies (at the decimal level) between the "GitHub repository" and "Original paper" results may occur. This is due to the stochastic nature of the RANSAC (Random Sample Consensus) algorithm used during the Plane Fitting process for damage quantification. While the overall precision remains high, these randomized iterations can lead to slight variations in each run.
+Please note that minor discrepancies between the "GitHub repository" and "Original paper" results may occur. This is due to the stochastic nature of the RANSAC (Random Sample Consensus) algorithm used during the Plane Fitting process for damage quantification. While the overall precision remains high, these randomized iterations can lead to slight variations in each run.
 
 
 # Dependency
