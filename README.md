@@ -6,7 +6,7 @@ The proposed pipeline integrates
 **YOLOv8-based damage segmentation**, **structure-from-motion (SfM)**, and **hierarchical localization (hloc)**  
 to achieve **consistent damage detection, spatial alignment, and quantitative comparison** across multiple inspection times.
 
-Rather than focusing on large-scale benchmarking, this repository emphasizes:
+This repository emphasizes:
 
 - **Reproducibility** of the proposed workflow  
 - **Clear methodological understanding** for research-oriented use  
