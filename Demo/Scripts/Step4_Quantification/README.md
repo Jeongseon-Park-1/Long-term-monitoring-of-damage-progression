@@ -7,9 +7,12 @@ This step quantitatively estimates the damage area from each query image using d
 For each damage mask, pixel-wise depth values are used to estimate the local surface geometry.
 The physical area corresponding to each damaged pixel is computed and summed to obtain the total damage area.
 
+
 📊 Quantitative Results (Water Leakage)
 The following table compares the results from this GitHub demo against the original paper's results to demonstrate the pipeline's robustness.
 
+<div align="center">
+  
 <table>
 <p align="center">
   <img src="result2.png" width="600">
@@ -27,11 +30,11 @@ The following table compares the results from this GitHub demo against the origi
 <th>GitHub repository
 
 
-(29 images)</th>
+</th>
 <th>Original paper
 
 
-(2,251 images)</th>
+</th>
 <th>Reference</th>
 </tr>
 </thead>
@@ -87,6 +90,12 @@ The following table compares the results from this GitHub demo against the origi
 </tr>
 </tbody>
 </table>
+
+</div>
+
+⚠️ Technical Note on RANSAC Variability:
+Please note that minor discrepancies (at the decimal level) between the "GitHub repository" and "Original paper" results may occur. This is due to the stochastic nature of the RANSAC (Random Sample Consensus) algorithm used during the Plane Fitting process for damage quantification. While the overall precision remains high, these randomized iterations can lead to slight variations in each run.
+
 
 # Dependency
 
