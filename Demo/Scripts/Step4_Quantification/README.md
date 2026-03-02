@@ -11,10 +11,10 @@ The physical area corresponding to each damaged pixel is computed and summed to 
 The following table compares the results from this GitHub demo against the original paper's results to demonstrate the pipeline's robustness.
 
 <table>
-# Example result
 <p align="center">
   <img src="result2.png" width="600">
 </p>
+
 
 <table>
 <thead>
