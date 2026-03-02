@@ -1,12 +1,10 @@
 # Demo: Damage Monitoring Pipeline
 
-
-This folder provides a minimal, reproducible demo of the proposed damage
-localization and quantification pipeline used in the paper.
-
-The demo is organized as a step-by-step workflow, from camera pose estimation
-to similarity-based image pairing and damage quantification.
-
+> [!IMPORTANT]
+> ### 🔍 Authenticity & Reproducibility
+> * **Direct Subset of Original Data:** The images and `.mat` files in this demo are **not** separate examples; they are a **representative subset directly extracted from the original datasets** used in our paper (curated from actual routine bridge inspections).
+> * **Identical Results:** All results generated through this demo are **fully identical** to the specific cases presented in the paper. This confirms that the proposed quantification pipeline maintains its integrity even when running on this lightweight version of the data.
+> * **Storage Efficiency:** While the original study utilized **2,251 images**, this folder provides **29 images** to allow for immediate verification without high storage requirements.
 ---
 
 # ⚠️ Quick Start (Recommended) ⚠️
@@ -82,6 +80,7 @@ Step 4: Quantification
 - All image data and large intermediate files are tracked using Git LFS.
 - The demo dataset is a representative subset used only for demonstration.
 - File paths in the scripts are relative to the Demo directory.
+
 
 
 
