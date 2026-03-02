@@ -31,7 +31,7 @@ The core components of the pipeline are:
 
 This repository focuses on providing:
 - Source code    
-- Representative sample images  
+- Representative images  
 - A lightweight demo pipeline  
 
 ---
@@ -149,8 +149,6 @@ The demo assumes that:
 ## Dataset Availability
 
 The UAV imagery used in this study were captured from an operational prestressed concrete girder bridge at different inspection times.
-
-Representative sample images required to run the demo pipeline are included in this repository.
 
 The full set of **initial inspection images** and **routine inspection images** used in this study are available via an external cloud storage link due to their large size:
 
