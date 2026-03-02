@@ -32,7 +32,6 @@ The core components of the pipeline are:
 This repository focuses on providing:
 - Source code    
 - Representative images  
-- A lightweight demo pipeline  
 
 ---
 
