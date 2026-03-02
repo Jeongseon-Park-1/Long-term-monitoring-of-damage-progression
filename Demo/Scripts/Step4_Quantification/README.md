@@ -8,7 +8,7 @@ For each damage mask, pixel-wise depth values are used to estimate the local sur
 The physical area corresponding to each damaged pixel is computed and summed to obtain the total damage area.
 
 
-📊 Quantitative Results (Water Leakage)
+# 📊 Quantitative Results (Water Leakage)
 The following table compares the results from this GitHub demo against the original paper's results to demonstrate the pipeline's robustness.
 
 <div align="center">
