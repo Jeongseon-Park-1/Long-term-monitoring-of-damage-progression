@@ -136,7 +136,7 @@ https://github.com/cvg/Hierarchical-Localization
 
 ## Demo (Reproducible Example)
 
-A lightweight demo is provided to allow users to directly reproduce the core visualization and quantification process.
+This demno is provided to allow users to directly reproduce the core visualization and quantification process.
 
 The demo assumes that:
 - SfM reconstruction has already been performed 
