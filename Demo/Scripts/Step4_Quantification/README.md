@@ -226,7 +226,7 @@ The following table compares the results from this GitHub demo against the origi
 </thead>
 <tbody>
 <tr>
-<td rowspan="5" align="center"><b>Crack</b></td>
+<td rowspan="5" align="center"><b>Spalling</b></td>
 
 <td align="center">Reference</td>
 <td align="center">@@
