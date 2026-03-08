@@ -9,9 +9,21 @@ Damage regions from different inspection times are overlaid with transparency, a
 
 This visualization allows intuitive inspection of damage location consistency, spatial overlap, and viewpoint similarity across inspections.
 
-# 📊 Qualitative Result (Water Leakage)
+# 📊 Qualitative Result
+
+* **Water leakage**
 <p align="center">
-  <img src="result.png" width="600">
+  <img src="w_q.png" width="600">
+</p>
+
+* **Crack**
+<p align="center">
+  <img src="c_q.png" width="600">
+</p>
+
+* **Spalling**
+<p align="center">
+  <img src="s_q.png" width="600">
 </p>
 
 # Dependency

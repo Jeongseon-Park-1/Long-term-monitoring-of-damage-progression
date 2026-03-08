@@ -26,7 +26,7 @@ Instead, the required variables are provided as a pre-saved MATLAB workspace fil
 
 Load the workspace file as follows:
 ```matlab
-load("Scripts\Step2_SimilarityIndex\workspace_step2.mat")
+load("Scripts\Step1_CameraPoseRstimation\Data\Workspace\workspace.mat")
 ```
 This file includes the required variables for Step 2, such as:
 
@@ -41,11 +41,13 @@ run("Scripts\Step2_SimilarityIndex\Step2.m")
 ```
 
 What Step2.m does:
+- extracts GNSS metadata from images and computes the physical scale (scale conversion factor, SCF) by aligning camera optical centers with GNSS coordinates using the Procrustes method
+ **Note:** The file `out_of_bridge.txt` in the `Step2_SimilarityIndex` folder contains images manually identified during the initial inspection as being captured from the outer boundary of the bridge. Only these images are used for the Procrustes alignment because their GNSS measurements are more reliable.
 - reads damage masks for query images
 - projects damaged pixels from each query into all reference images
 - counts valid projected pixels per reference image
 - selects the reference image with the maximum count
-- writes the best match as a query–reference pair (e.g., Best_Match_Pairs.txt)
+- writes the best match as a query–reference pair
 
 ---
 
@@ -85,15 +87,3 @@ saveCameraExtrinsics( ...
     "CameraExtParams", ...
     "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt")
 ```
-
-### Scale conversion factor
-
-A physical scale factor can be estimated by aligning the distribution of camera optical centers (from extrinsics) with the corresponding image GPS positions using a Procrustes-based similarity transform.
-The estimated scaleFactor converts SfM reconstruction units into physical units.
-
-```matlab
-SCF = scalefactor("Scripts\Step1_CameraPoseEstimation\Data\images\Reference");
-```
- 
-***For this demo, the scale factor is entered in the quantification calculation.***
-

@@ -1,23 +1,56 @@
-clc;
+clc
 
 thisDir = fileparts(mfilename("fullpath"));
-demoRoot = fileparts(fileparts(thisDir));      
+demoRoot = fileparts(fileparts(thisDir));
 
-imgFolder = fullfile(demoRoot, ...
-    "Scripts","Step1_CameraPoseEstimation","Data", ...
-    "Routine_inspection4_data","SfM","Dense","images");
+imageDir = fullfile(demoRoot,"Data","images");
+listPath = fullfile(demoRoot,"Scripts","Step2_SimilarityIndex","out_of_bridge.txt");
+depthFolderPath = fullfile(demoRoot, ...
+    "Scripts","Step1_CameraPoseEstimation","Data","Depthmaps");
+
+try
+    SCF = scalefactor(imageDir,listPath);
+    assignin("base","SCF",SCF);
+    fprintf("SCF: %.12f\n",SCF);
+catch ME
+    fprintf("SCF calculation skipped: %s\n", ME.message);
+end
+
+fprintf("Updating Depthmaps from: %s\n", depthFolderPath);
+Depthmaps = saveDepthMapFileList(depthFolderPath,"Depthmaps");
+assignin("base","DepthMapFiles",Depthmaps);
 
 txtInputPath = fullfile(demoRoot, ...
     "Scripts","Step2_SimilarityIndex","Segmentation_mask", ...
     "Damage_detected_images.txt");
 
-outputFileName = fullfile(thisDir, "Best_Match_Pairs.txt");
+if ~evalin("base","exist('CameraIntParams','var')")
+    error("CameraIntParams not found in base workspace.");
+end
+if ~evalin("base","exist('CameraExtParams','var')")
+    error("CameraExtParams not found in base workspace.");
+end
+if ~evalin("base","exist('Depthmaps','var')")
+    error("Depthmaps not found in base workspace.");
+end
 
-alpha = 0.85; 
+CameraIntParams = evalin("base","CameraIntParams");
+CameraExtParams = evalin("base","CameraExtParams");
+Depthmaps       = evalin("base","Depthmaps");
 
-fid = fopen(txtInputPath, 'r');
-if fid == -1, error("File not found: %s", txtInputPath); end
-rawOutput = textscan(fid, '%s');
+K_names  = lower(strtrim(string({CameraIntParams.image_name})));
+E_names  = lower(strtrim(string({CameraExtParams.ImageName})));
+DM_names = lower(strtrim(string({Depthmaps.FileName})));
+
+refMask = contains(E_names,"ref_");
+refFiles = string({CameraExtParams(refMask).ImageName});
+refFiles = unique(refFiles);
+
+fid = fopen(txtInputPath,'r');
+if fid == -1
+    error("File not found: %s", txtInputPath);
+end
+rawOutput = textscan(fid,'%s');
 fclose(fid);
 
 if isempty(rawOutput) || isempty(rawOutput{1})
@@ -25,155 +58,270 @@ if isempty(rawOutput) || isempty(rawOutput{1})
 end
 queryFiles = string(rawOutput{1});
 
-imgFiles = dir(fullfile(imgFolder, "*.jpg"));
-refFiles = string({imgFiles(contains({imgFiles.name}, "Ref_")).name});
+nQuery = numel(queryFiles);
+nRef = numel(refFiles);
+updateEvery = 1;
+sampleStep = 16;
+topN = 5;
 
-K_names = lower(string({CameraIntParams.image_name}));
-E_names = lower(string({CameraExtParams.ImageName}));
-dm_names = lower(string({Depthmaps.FileName}));
-Results = struct('Query', {}, 'BestRef', {}, 'MaxPixels', {});
+BestPairs = strings(0,2);
+Top5Pairs = struct("Query",{}, "Refs",{}, "Scores",{});
 
-for q = 1:numel(queryFiles)
-    qFile_raw = queryFiles(q);
+fprintf("\nMatching queries to references using full-image pixels...\n")
+
+for q = 1:nQuery
+
+    qFile_raw_input = string(strtrim(queryFiles(q)));
+
+    if startsWith(lower(qFile_raw_input), "ref_")
+        fprintf("\n[%d/%d] %s -> skipped (Ref image)\n", q, nQuery, qFile_raw_input);
+        continue
+    end
+
+    qFile_raw = normalizeQueryName(qFile_raw_input);
     qFile = lower(qFile_raw);
-    [~, qName] = fileparts(qFile);
-    
-    Kq = CameraIntParams(K_names == qFile);
-    Eq = CameraExtParams(E_names == qFile);
-    idxDq = find(dm_names == qFile | contains(dm_names, lower(qName)), 1);
-    
-    if isempty(Kq) || isempty(Eq) || isempty(idxDq)
-        Results(q).Query = qFile_raw; Results(q).BestRef = "None"; Results(q).MaxPixels = 0;
-        continue; 
-    end
-    
-    Iq = imresize(im2double(imread(fullfile(imgFolder, qFile_raw))), [Kq.height, Kq.width], "nearest");
-    Dq = Depthmaps(idxDq).DepthMap;
-    [uG, vG] = meshgrid(1:Kq.width, 1:Kq.height);
-    u = uG(:); v = vG(:); z = Dq(:); valid = isfinite(z) & z > 0;
-    
-    Xc_q = [(u(valid) - Kq.cx)./Kq.fx .* z(valid), (v(valid) - Kq.cy)./Kq.fy .* z(valid), z(valid)]';
-    Xw = Eq.R' * (Xc_q - Eq.t);
-    
-    maxPx = -1;
-    bestRef = "None";
-    
-    for r = 1:numel(refFiles)
-        rFile_raw = refFiles(r);
-        Kr = CameraIntParams(K_names == lower(rFile_raw));
-        Er = CameraExtParams(E_names == lower(rFile_raw));
-        if isempty(Kr) || isempty(Er), continue; end
-        
-        Xc_r = Er.R * Xw + Er.t;
-        Zr = Xc_r(3,:); front = Zr > 0;
-        u2 = Kr.fx .* (Xc_r(1,front)./Zr(front)) + Kr.cx;
-        v2 = Kr.fy .* (Xc_r(2,front)./Zr(front)) + Kr.cy;
-        u2i = round(u2); v2i = round(v2);
-        
-        inImg = u2i >= 1 & u2i <= Kr.width & v2i >= 1 & v2i <= Kr.height;
-        if ~any(inImg), continue; end
-        
-        linIdx = sub2ind([Kr.height, Kr.width], v2i(inImg), u2i(inImg));
-        numPx = numel(unique(linIdx));
-        
-        if numPx > maxPx
-            maxPx = numPx;
-            bestRef = rFile_raw;
-        end
-    end
-    
-    Results(q).Query = qFile_raw;
-    Results(q).BestRef = bestRef;
-    Results(q).MaxPixels = maxPx;
-    fprintf("[%d/%d] %s -> %s (%d px)\n", q, numel(queryFiles), qFile_raw, bestRef, maxPx);
-end
 
-qGroupNames = strings(numel(Results), 1);
-for i = 1:numel(Results)
-    token = regexp(Results(i).Query, 'sQuery\d+', 'match', 'once');
-    if ~isempty(token), qGroupNames(i) = token; end
-end
+    [~, qName, ~] = fileparts(qFile_raw);
 
-uniqueGroups = unique(qGroupNames(qGroupNames ~= ""));
-for g = 1:numel(uniqueGroups)
-    thisGroup = uniqueGroups(g);
-    gIdx = find(qGroupNames == thisGroup); 
-    groupRefs = [Results(gIdx).BestRef];
-    uniqueRefsInG = unique(groupRefs(groupRefs ~= "None"));
-    
-    for r = 1:numel(uniqueRefsInG)
-        targetRef = uniqueRefsInG(r);
-        candIdx = gIdx([Results(gIdx).BestRef] == targetRef);
-        if numel(candIdx) > 1
-            [~, localWinner] = max([Results(candIdx).MaxPixels]);
-            winnerIdx = candIdx(localWinner);
-            losersIdx = candIdx(candIdx ~= winnerIdx);
-            for lIdx = losersIdx
-                Results(lIdx).BestRef = "None";
+    fprintf("\n[%d/%d] Query: %s\n", q, nQuery, qFile_raw_input);
+
+    idxKq = find(K_names == qFile,1);
+    idxEq = find(E_names == qFile,1);
+    idxDq = find(DM_names == qFile,1);
+
+    if isempty(idxKq), idxKq = find(contains(K_names, lower(qName)),1); end
+    if isempty(idxEq), idxEq = find(contains(E_names, lower(qName)),1); end
+    if isempty(idxDq), idxDq = find(contains(DM_names, lower(qName)),1); end
+
+    if isempty(idxKq) || isempty(idxEq) || isempty(idxDq)
+        fprintf("   skipped (missing K/E/Depth)\n");
+        continue
+    end
+
+    Kq = CameraIntParams(idxKq);
+    Eq = CameraExtParams(idxEq);
+
+    try
+        Dq = readDepthMapColmap(Depthmaps(idxDq).FilePath);
+    catch ME
+        fprintf("   skipped (depth read fail: %s)\n", ME.message);
+        continue
+    end
+
+    if size(Dq,1) ~= Kq.height || size(Dq,2) ~= Kq.width
+        Dq = imresize(Dq,[Kq.height,Kq.width],"nearest");
+    end
+
+    u = 1:sampleStep:Kq.width;
+    v = 1:sampleStep:Kq.height;
+    [uG, vG] = meshgrid(u, v);
+
+    uAll = uG(:);
+    vAll = vG(:);
+
+    linAll = sub2ind([Kq.height, Kq.width], vAll, uAll);
+    z = double(Dq(linAll));
+
+    valid = isfinite(z) & z > 0;
+    if ~any(valid)
+        fprintf("   skipped (no valid depth in full image)\n");
+        continue
+    end
+
+    u = double(uAll(valid));
+    v = double(vAll(valid));
+    z = double(z(valid));
+
+    Xc_q = [ ...
+        ((u-Kq.cx)./Kq.fx).*z, ...
+        ((v-Kq.cy)./Kq.fy).*z, ...
+        z]';
+
+    Xw = Eq.R' * (Xc_q - Eq.t(:));
+
+    allScores = zeros(nRef,1);
+
+    for r = 1:nRef
+
+        if r == 1 || mod(r,updateEvery) == 0 || r == nRef
+            fprintf('   refs checked: %4d / %4d', r, nRef);
+            if r < nRef
+                fprintf('\r');
+            else
+                fprintf('\n');
             end
         end
+
+        rFile_raw = string(refFiles(r));
+        rFile = lower(strtrim(rFile_raw));
+
+        idxKr = find(K_names == rFile,1);
+        idxEr = find(E_names == rFile,1);
+
+        if isempty(idxKr) || isempty(idxEr)
+            continue
+        end
+
+        Kr = CameraIntParams(idxKr);
+        Er = CameraExtParams(idxEr);
+
+        Xc_r = Er.R * Xw + Er.t(:);
+        Zr = Xc_r(3,:);
+
+        front = Zr > 0;
+        if ~any(front)
+            continue
+        end
+
+        u2 = Kr.fx .* (Xc_r(1,front)./Zr(front)) + Kr.cx;
+        v2 = Kr.fy .* (Xc_r(2,front)./Zr(front)) + Kr.cy;
+
+        u2i = round(u2);
+        v2i = round(v2);
+
+        inImg = u2i >= 1 & u2i <= Kr.width & v2i >= 1 & v2i <= Kr.height;
+        if ~any(inImg)
+            continue
+        end
+
+        linIdx = sub2ind([Kr.height Kr.width], v2i(inImg), u2i(inImg));
+        allScores(r) = numel(unique(linIdx));
+    end
+
+    validRefIdx = find(allScores > 0);
+    if isempty(validRefIdx)
+        fprintf("   done -> no valid ref found\n");
+        continue
+    end
+
+    validScores = allScores(validRefIdx);
+    validRefs = refFiles(validRefIdx);
+
+    [sortedScores, sortIdx] = sort(validScores, "descend");
+    sortedRefs = validRefs(sortIdx);
+
+    keepN = min(topN, numel(sortedRefs));
+    topRefs = sortedRefs(1:keepN);
+    topScores = sortedScores(1:keepN);
+
+    BestPairs(end+1,:) = [qFile_raw_input, topRefs(1)];
+
+    Top5Pairs(end+1).Query = qFile_raw_input;
+    Top5Pairs(end).Refs = topRefs;
+    Top5Pairs(end).Scores = topScores;
+
+    fprintf("   done -> best ref: %s | overlap: %d\n", topRefs(1), topScores(1));
+    fprintf("   Top %d refs:\n", keepN);
+    for k = 1:keepN
+        fprintf("      %d) %s | %d\n", k, topRefs(k), topScores(k));
     end
 end
 
-fid = fopen(outputFileName, 'w');
-for i = 1:numel(Results)
-    if Results(i).BestRef ~= "None"
-        fprintf(fid, "%s %s\n", Results(i).Query, Results(i).BestRef);
+assignin("base","BestPairs",BestPairs);
+assignin("base","Top5Pairs",Top5Pairs);
+
+fprintf("\nFinished.\n");
+fprintf("Final BestPairs: %d\n\n", size(BestPairs,1));
+
+disp("Best Matching Pairs:");
+disp(BestPairs);
+
+disp("Top5Pairs saved to base workspace.");
+
+function Depthmaps = saveDepthMapFileList(folderPath, outputVarName)
+if nargin < 2 || strlength(string(outputVarName)) == 0
+    outputVarName = "Depthmaps";
+end
+
+folderPath = string(folderPath);
+if ~isfolder(folderPath)
+    error("Depth map folder not found: %s", folderPath);
+end
+
+depthMapFiles = dir(fullfile(folderPath, '*.jpg.geometric.bin'));
+
+if isempty(depthMapFiles)
+    error("No .geometric.bin files found in the specified folder.");
+end
+
+Depthmaps = struct('FileName', {}, 'FilePath', {});
+
+for i = 1:numel(depthMapFiles)
+    filePath = fullfile(depthMapFiles(i).folder, depthMapFiles(i).name);
+    baseName = regexprep(depthMapFiles(i).name, '\.geometric\.bin$', '');
+
+    Depthmaps(i).FileName = baseName;
+    Depthmaps(i).FilePath = filePath;
+end
+
+assignin('base', char(outputVarName), Depthmaps);
+fprintf('Depth map file list saved to "%s".\n', char(outputVarName));
+end
+
+function outName = normalizeQueryName(inName)
+inName = string(strtrim(inName));
+tok = regexp(inName, '^(sQuery\d+)_(\d+)(\.jpg)$', 'tokens', 'once', 'ignorecase');
+if isempty(tok)
+    outName = inName;
+    return
+end
+prefix = string(tok{1});
+numStr = string(tok{2});
+ext = string(tok{3});
+numVal = str2double(numStr);
+if isnan(numVal)
+    outName = inName;
+    return
+end
+outName = string(sprintf('%s_%03d%s', char(prefix), numVal, char(ext)));
+end
+
+function depth = readDepthMapColmap(filePath)
+fid = fopen(filePath,'rb');
+if fid == -1
+    error("Cannot open depth map: %s", filePath);
+end
+
+c = onCleanup(@() fclose(fid));
+
+header = '';
+numAmp = 0;
+
+while numAmp < 3
+    ch = fread(fid,1,'*char');
+    if isempty(ch)
+        error("Invalid COLMAP depth map header: %s", filePath);
+    end
+    header(end+1) = ch;
+    if ch == '&'
+        numAmp = numAmp + 1;
     end
 end
-fclose(fid);
 
-finalIdx = find([Results.BestRef] ~= "None");
-if ~isempty(finalIdx), disp(struct2table(Results(finalIdx))); end
+vals = sscanf(header,'%d&%d&%d&');
+if numel(vals) < 3
+    error("Failed to parse depth map header: %s", filePath);
+end
 
-%% 6. VISUALIZE ALL MATCHES
-% fprintf("\nVisualizing filtered matches...\n");
-% for i = reshape(finalIdx, 1, [])
-%     qData = Results(i);
-%     Kq = CameraIntParams(K_names == lower(qData.Query));
-%     Eq = CameraExtParams(E_names == lower(qData.Query));
-%     Kr = CameraIntParams(K_names == lower(qData.BestRef));
-%     Er = CameraExtParams(E_names == lower(qData.BestRef));
-% 
-%     [~, qNameOnly] = fileparts(qData.Query);
-%     idxDq = find(contains(dm_names, lower(qNameOnly)), 1);
-%     Dq = Depthmaps(idxDq).DepthMap;
-%     Iq = imresize(im2double(imread(fullfile(imgFolder, qData.Query))), [Kq.height, Kq.width], "nearest");
-%     Ir = imresize(im2double(imread(fullfile(imgFolder, qData.BestRef))), [Kr.height, Kr.width], "nearest");
-% 
-%     [uG, vG] = meshgrid(1:Kq.width, 1:Kq.height);
-%     u = uG(:); v = vG(:); z = Dq(:); valid = isfinite(z) & z > 0;
-%     Xc_q = [(u(valid) - Kq.cx)./Kq.fx .* z(valid), (v(valid) - Kq.cy)./Kq.fy .* z(valid), z(valid)]';
-%     Xw = Eq.R' * (Xc_q - Eq.t);
-% 
-%     Xc_r = Er.R * Xw + Er.t;
-%     Zr = Xc_r(3,:); front = Zr > 0;
-%     u2 = Kr.fx .* (Xc_r(1,front)./Zr(front)) + Kr.cx;
-%     v2 = Kr.fy .* (Xc_r(2,front)./Zr(front)) + Kr.cy;
-%     u2i = round(u2); v2i = round(v2);
-%     inImg = u2i >= 1 & u2i <= Kr.width & v2i >= 1 & v2i <= Kr.height;
-% 
-%     linIdx = sub2ind([Kr.height, Kr.width], v2i(inImg), u2i(inImg));
-%     Zr_f = Zr(front); Zr_f = Zr_f(inImg);
-%     [~, ord] = sort(Zr_f, "ascend");
-%     [linU, ia] = unique(linIdx(ord), "stable");
-% 
-%     Cq_full = reshape(Iq, [], 3); Cq_valid = Cq_full(valid,:);
-%     Cq_loop = Cq_valid(front,:); Cq_loop = Cq_loop(inImg,:);
-%     selC = Cq_loop(ord,:); selC = selC(ia,:);
-% 
-%     overlay = Ir;
-%     projMask = false(Kr.height, Kr.width); projMask(linU) = true;
-%     for c = 1:3
-%         ch = overlay(:,:,c); pj = zeros(Kr.height, Kr.width);
-%         pj(linU) = selC(:,c);
-%         ch(projMask) = (1-alpha) * ch(projMask) + alpha * pj(projMask);
-%         overlay(:,:,c) = ch;
-%     end
-% 
-%     figure('Name', sprintf("Match: %s", qNameOnly), 'Color', 'w');
-%     imshow(overlay);
-%     title(sprintf("Query: %s \\rightarrow Ref: %s (%d px)", ...
-%           qData.Query, qData.BestRef, qData.MaxPixels), 'Interpreter', 'tex');
-%     drawnow;
-% end
+width = vals(1);
+height = vals(2);
+channels = vals(3);
+
+raw = fread(fid,inf,'*single');
+expected = width * height * channels;
+
+if numel(raw) < expected
+    error("Depth data size mismatch: %s", filePath);
+end
+
+raw = raw(1:expected);
+
+if channels == 1
+    depth = reshape(raw,[width,height])';
+else
+    raw = reshape(raw,[channels,width,height]);
+    depth = squeeze(raw(1,:,:))';
+end
+
+depth = double(depth);
+end

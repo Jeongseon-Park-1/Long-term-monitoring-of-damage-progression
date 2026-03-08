@@ -7,23 +7,23 @@ This step defines a common coordinate system and estimates camera poses across d
 
 ---
 
-## ⚡ Choose Your Path
+## ⚡Choose Your Option For Demo
 
 Rebuilding the workspace from raw reconstruction outputs is computationally expensive and time-consuming. Please choose one of the following options:
 
 ### **Option 1: Quick Start (Recommended)**
 Skip the reconstruction and proceed directly to **Step 2** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
 
-* **Download Pre-computed Data:**
-    * [📦 Pre-saved MATLAB Workspace (.mat)](링크:~)
-* **Mandatory Datasets:**
-    * [🖼️ Download All Images & Depthmaps (under `Data/`)](링크:~)
+* **Download Datasets:**
+    * [MATLAB Workspace (.mat)]
+    * [Images & Depthmaps (under `Data/`)]
 * **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data/` directory, then proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
 Follow the [Method](#method) below to perform the entire SfM (Structure-from-Motion) and Localization process from scratch.
-* **Requirement:** Download the raw image datasets (2,509 images) first.
-* **Download Raw Images:** [🔗 Raw Image Datasets (Dropbox)](링크:~)
+* **Requirement:** Download the raw image datasets (2,509 images).
+* **Download Raw Images:** [🔗 Raw Image Datasets (Dropbox)]
+* **Action Required:** After downloading, save the files in the appropriate folders according to the directory structure.
 
 ---
 

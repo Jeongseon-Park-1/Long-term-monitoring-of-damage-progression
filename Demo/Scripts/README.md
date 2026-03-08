@@ -3,9 +3,7 @@
 > [!IMPORTANT]
 > ### 🔍 Authenticity & Reproducibility
 > * **Full Data Utilization:** This repository utilizes the complete dataset of **2,509 images** curated from actual routine bridge inspections, ensuring the robustness and accuracy of the proposed quantification pipeline.
-> * **Direct Access to Processed Data:** To support full reproducibility and immediate verification, we provide the estimated camera parameters and dense depth maps:
->     * **[.mat Files](링크:~)**: Estimated camera parameters.
->     * **[.bin Files](링크:~)**: Depth maps.
+> * **Direct Access to Processed Data:** To support full reproducibility and immediate verification, we provide the estimated camera parameters and Depthmaps:
 > * **Analysis Efficiency:** By providing these pre-computed parameters and depth maps, users can verify the 3D geometry and loosening quantification results without re-running the full reconstruction process.
 ---
 
@@ -25,7 +23,7 @@ If the goal is to reproduce the qualitative and quantification results,
            
             
 ```
-you can skip Step 1 and start directly from Step 2.
+If **Option 1** is selected in **Step 1**, you can proceed directly to **Step 2**.
 ```
 
 # Environment
@@ -58,6 +56,7 @@ Step 1: Camera Pose Estimation
 
 Step 2: Similarity Index
 
+- Extracts GNSS information from images and aligns the scale of the SfM model using the Procrustes method
 - Projects damaged pixels from query images into all reference images
 - Selects the reference image with the largest number of valid projections
 - Generates query–reference image pairs
@@ -79,7 +78,6 @@ Step 4: Quantification
 
 # Notes
 
-- All image data and large intermediate files are tracked using Git LFS.
 - File paths in the scripts are relative to the Demo directory.
 
 

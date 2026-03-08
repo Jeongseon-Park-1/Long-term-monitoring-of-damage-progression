@@ -66,7 +66,7 @@ Long-term-monitoring-of-damage-progression/
 │  │     ├─ Step4.m
 │  │     └─ README.md
 │  │
-│  └─ README.md                     # Demo-level instructions
+│  └─ README.md                     # Demo instructions
 │
 ├─ Instance_segmentation/
 │  ├─ train_seg.py                  # YOLOv8 training script

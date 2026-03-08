@@ -8,16 +8,17 @@ For each damage mask, pixel-wise depth values are used to estimate the local sur
 The physical area corresponding to each damaged pixel is computed and summed to obtain the total damage area.
 
 
-# 📊 Quantitative Result (Water Leakage)
+# 📊 Quantitative Result
 The following table compares the results from this GitHub demo against the original paper's results to demonstrate the pipeline's robustness.
+
+* **Water leakage**
 
 <div align="center">
   
 <table>
 <p align="center">
-  <img src="result2.png" width="600">
+  <img src="w_qn.png" width="600">
 </p>
-
 
 <table>
 <thead>
@@ -93,8 +94,209 @@ The following table compares the results from this GitHub demo against the origi
 
 </div>
 
+
+* **Crack**
+
+
+<div align="center">
+  
+<table>
+<p align="center">
+  <img src="c_qn.png" width="600">
+</p>
+
+<table>
+<thead>
+<tr>
+<th rowspan="2">Damage type</th>
+<th rowspan="2">Image set</th>
+<th colspan="3">Damage area (cm²)</th>
+</tr>
+<tr>
+<th>GitHub repository
+
+
+</th>
+<th>Original paper
+
+
+</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="5" align="center"><b>Crack</b></td>
+
+<td align="center">Reference</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">57.32
+
+
+(%)</td>
+<td align="center">55.19</td>
+</tr>
+<tr>
+
+<td align="center">Query #1</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">63.70
+
+
+(%)</td>
+<td align="center">66.48</td>
+</tr>
+<tr>
+<td align="center">Query #2</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">89.49
+
+
+(%)</td>
+<td align="center">92.23</td>
+</tr>
+<tr>
+<td align="center">Query #3</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">230.09
+
+
+(%)</td>
+<td align="center">241.01</td>
+</tr>
+<tr>
+<td align="center">Query #4</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">272.43
+
+
+(%)</td>
+<td align="center">266.82</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+* **Spalling**
+
+
+<div align="center">
+  
+<table>
+<p align="center">
+  <img src="c_qn.png" width="600">
+</p>
+
+<table>
+<thead>
+<tr>
+<th rowspan="2">Damage type</th>
+<th rowspan="2">Image set</th>
+<th colspan="3">Damage area (cm²)</th>
+</tr>
+<tr>
+<th>GitHub repository
+
+
+</th>
+<th>Original paper
+
+
+</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="5" align="center"><b>Crack</b></td>
+
+<td align="center">Reference</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">384.49
+
+
+(%)</td>
+<td align="center">367.55</td>
+</tr>
+<tr>
+
+<td align="center">Query #1</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">497.78
+
+
+(%)</td>
+<td align="center">477.12</td>
+</tr>
+<tr>
+<td align="center">Query #2</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">523.50
+
+
+(%)</td>
+<td align="center">546.23</td>
+</tr>
+<tr>
+<td align="center">Query #3</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">533.34
+
+
+(%)</td>
+<td align="center">540.59</td>
+</tr>
+<tr>
+<td align="center">Query #4</td>
+<td align="center">@@
+
+
+(%)</td>
+<td align="center">646.98
+
+
+(%)</td>
+<td align="center">662.24</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
 ⚠️ Technical Note on RANSAC Variability:
-Please note that minor discrepancies between the "GitHub repository" and "Original paper" results may occur. This is due to the stochastic nature of the RANSAC (Random Sample Consensus) algorithm used during the Plane Fitting process for damage quantification. While the overall precision remains high, these randomized iterations can lead to slight variations in each run.
+Note that minor discrepancies between the "GitHub repository" and "Original paper" results may occur. This is due to the stochastic nature of the RANSAC (Random Sample Consensus) algorithm used during the Plane Fitting process for damage quantification. While the overall precision remains high, these randomized iterations can lead to slight variations in each run.
 
 
 # Dependency
