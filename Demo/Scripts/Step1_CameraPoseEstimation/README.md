@@ -13,9 +13,12 @@ Rebuilding the workspace from raw reconstruction outputs is computationally expe
 
 ### **Option 1: Quick Start (Recommended)**
 Skip the reconstruction and proceed directly to **Step 2** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
-* **Download Pre-computed Data:** * [📦 Pre-saved MATLAB Workspace (.mat)](링크:~)
-    * [📂 Pre-generated Depth Maps (.bin)](링크:~)
-* **Next Step:** After downloading, move the files to the `Data/` directory and proceed to **Step 2**.
+
+* **Download Pre-computed Data:**
+    * [📦 Pre-saved MATLAB Workspace (.mat)](링크:~)
+* **Mandatory Datasets:**
+    * [🖼️ Download All Images & Depthmaps (under `Data/`)](링크:~)
+* **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data/` directory, then proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
 Follow the [Method](#method) below to perform the entire SfM (Structure-from-Motion) and Localization process from scratch.
