@@ -28,14 +28,8 @@ The following table compares the results from this GitHub demo against the origi
 <th colspan="3">Damage area (cm²)</th>
 </tr>
 <tr>
-<th>GitHub repository
-
-
-</th>
-<th>Original paper
-
-
-</th>
+<th>GitHub repository</th>
+<th>Original paper</th>
 <th>Reference</th>
 </tr>
 </thead>
@@ -43,50 +37,26 @@ The following table compares the results from this GitHub demo against the origi
 <tr>
 <td rowspan="4" align="center"><b>Water leakage</b></td>
 <td align="center">Query #1</td>
-<td align="center">942.92
-
-
-(1.18%)</td>
-<td align="center">943.87
-
-
-(1.29%)</td>
+<td align="center">942.92<br>(1.18%)</td>
+<td align="center">943.87<br>(1.29%)</td>
 <td align="center">931.89</td>
 </tr>
 <tr>
 <td align="center">Query #2</td>
-<td align="center">1321.56
-
-
-(-3.70%)</td>
-<td align="center">1338.35
-
-
-(-2.47%)</td>
+<td align="center">1321.56<br>(-3.70%)</td>
+<td align="center">1338.35<br>(-2.47%)</td>
 <td align="center">1372.30</td>
 </tr>
 <tr>
 <td align="center">Query #3</td>
-<td align="center">4153.62
-
-
-(-0.58%)</td>
-<td align="center">4149.65
-
-
-(-0.67%)</td>
+<td align="center">4153.62<br>(-0.58%)</td>
+<td align="center">4149.65<br>(-0.67%)</td>
 <td align="center">4177.84</td>
 </tr>
 <tr>
 <td align="center">Query #4</td>
-<td align="center">16671.72
-
-
-(4.12%)</td>
-<td align="center">16695.23
-
-
-(4.26%)</td>
+<td align="center">16671.72<br>(4.12%)</td>
+<td align="center">16695.23<br>(4.26%)</td>
 <td align="center">16012.65</td>
 </tr>
 </tbody>
@@ -97,7 +67,6 @@ The following table compares the results from this GitHub demo against the origi
 
 * **Crack**
 
-
 <div align="center">
   
 <table>
@@ -113,14 +82,8 @@ The following table compares the results from this GitHub demo against the origi
 <th colspan="3">Damage area (cm²)</th>
 </tr>
 <tr>
-<th>GitHub repository
-
-
-</th>
-<th>Original paper
-
-
-</th>
+<th>GitHub repository</th>
+<th>Original paper</th>
 <th>Reference</th>
 </tr>
 </thead>
@@ -129,65 +92,39 @@ The following table compares the results from this GitHub demo against the origi
 <td rowspan="5" align="center"><b>Crack</b></td>
 
 <td align="center">Reference</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">57.32
-
-
-(%)</td>
+<td align="center">57.26<br>(3.75%)</td>
+<td align="center">57.32<br>(3.86%)</td>
 <td align="center">55.19</td>
 </tr>
+
 <tr>
-
 <td align="center">Query #1</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">63.70
-
-
-(%)</td>
+<td align="center">63.59<br>(-4.35%)</td>
+<td align="center">63.70<br>(-4.18%)</td>
 <td align="center">66.48</td>
 </tr>
+
 <tr>
 <td align="center">Query #2</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">89.49
-
-
-(%)</td>
+<td align="center">88.25<br>(-4.32%)</td>
+<td align="center">89.49<br>(-2.97%)</td>
 <td align="center">92.23</td>
 </tr>
+
 <tr>
 <td align="center">Query #3</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">230.09
-
-
-(%)</td>
+<td align="center">232.31<br>(-3.61%)</td>
+<td align="center">230.09<br>(-4.53%)</td>
 <td align="center">241.01</td>
 </tr>
+
 <tr>
 <td align="center">Query #4</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">272.43
-
-
-(%)</td>
+<td align="center">272.79<br>(2.24%)</td>
+<td align="center">272.43<br>(2.10%)</td>
 <td align="center">266.82</td>
 </tr>
+
 </tbody>
 </table>
 
@@ -197,12 +134,11 @@ The following table compares the results from this GitHub demo against the origi
 
 * **Spalling**
 
-
 <div align="center">
   
 <table>
 <p align="center">
-  <img src="c_qn.png" width="600">
+  <img src="s_qn.png" width="600">
 </p>
 
 <table>
@@ -213,14 +149,8 @@ The following table compares the results from this GitHub demo against the origi
 <th colspan="3">Damage area (cm²)</th>
 </tr>
 <tr>
-<th>GitHub repository
-
-
-</th>
-<th>Original paper
-
-
-</th>
+<th>GitHub repository</th>
+<th>Original paper</th>
 <th>Reference</th>
 </tr>
 </thead>
@@ -229,65 +159,39 @@ The following table compares the results from this GitHub demo against the origi
 <td rowspan="5" align="center"><b>Spalling</b></td>
 
 <td align="center">Reference</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">384.49
-
-
-(%)</td>
+<td align="center">380.56<br>(3.54%)</td>
+<td align="center">384.49<br>(4.61%)</td>
 <td align="center">367.55</td>
 </tr>
+
 <tr>
-
 <td align="center">Query #1</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">497.78
-
-
-(%)</td>
+<td align="center">498.21<br>(4.42%)</td>
+<td align="center">497.78<br>(4.33%)</td>
 <td align="center">477.12</td>
 </tr>
+
 <tr>
 <td align="center">Query #2</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">523.50
-
-
-(%)</td>
+<td align="center">523.10<br>(-4.23%)</td>
+<td align="center">523.50<br>(-4.16%)</td>
 <td align="center">546.23</td>
 </tr>
+
 <tr>
 <td align="center">Query #3</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">533.34
-
-
-(%)</td>
+<td align="center">540.27<br>(-0.06%)</td>
+<td align="center">533.34<br>(-1.34%)</td>
 <td align="center">540.59</td>
 </tr>
+
 <tr>
 <td align="center">Query #4</td>
-<td align="center">@@
-
-
-(%)</td>
-<td align="center">646.98
-
-
-(%)</td>
+<td align="center">647.87<br>(-2.17%)</td>
+<td align="center">646.98<br>(-2.30%)</td>
 <td align="center">662.24</td>
 </tr>
+
 </tbody>
 </table>
 
