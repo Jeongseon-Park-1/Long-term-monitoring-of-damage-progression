@@ -1,40 +1,44 @@
 # Step 1: Camera Pose Estimation
 
 ---
-# ⚠️ Notice
 
-Rebuilding the workspace from raw reconstruction outputs is computationally expensive and time-consuming.
-For convenience, you may skip the full reconstruction process and proceed directly to Step 2 using the provided files in this repository.
+## ⚡ Choose Your Path
 
-In this demo, all required variables for Step 2 are already stored in a pre-saved MATLAB workspace file, allowing immediate execution without repeating the earlier steps.
+Rebuilding the workspace from raw reconstruction outputs is computationally expensive and time-consuming. Please choose one of the following options:
+
+### **Option 1: Quick Start (Recommended)**
+Skip the reconstruction and proceed directly to **Step 2 (Quantification)** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
+* **Download Pre-computed Data:** * [📦 Pre-saved MATLAB Workspace (.mat)](링크:~)
+    * [📂 Pre-generated Depth Maps (.bin)](링크:~)
+* **Next Step:** After downloading, move the files to the `Data/` directory and proceed to [Step 2](../Step2_Quantification).
+
+### **Option 2: Full Reconstruction (Manual Process)**
+Follow the [Method](#method) below to perform the entire SfM (Structure-from-Motion) and Localization process from scratch.
+* **Requirement:** Download the raw image datasets (2,509 images) first.
+* **Download Raw Images:** [🔗 Raw Image Datasets (Dropbox)](링크:~)
+
 ---
 
 # Overview
-
 This step defines a common coordinate system and estimates camera poses across different inspection times.
-
 - A common coordinate system is defined using **Reference images** obtained during the initial inspection.  
 - **Query images** captured during routine inspections are registered to the existing SfM model using the **hloc** algorithm.
 
----
+
 
 # Dependencies
 
 ## Environment
-
 The authors tested this pipeline under the following environment:
-
 - Windows 11  
 - Python 3.9.13  
 - CUDA Toolkit 12.8  
 
 ## Hierarchical Localization (hloc)
-
 Please install hloc separately:
-
 ```bash
 cd Long-term-monitoring-of-damage-progression/Demo/Scripts/Step1_CameraPoseEstimation
-git clone https://github.com/cvg/Hierarchical-Localization.git
+git clone [https://github.com/cvg/Hierarchical-Localization.git](https://github.com/cvg/Hierarchical-Localization.git)
 cd Hierarchical-Localization
 pip install -r requirements.txt
 git submodule update --init --recursive
