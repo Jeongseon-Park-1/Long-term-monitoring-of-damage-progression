@@ -1,5 +1,10 @@
 # Step 1: Camera Pose Estimation
 
+# Overview
+This step defines a common coordinate system and estimates camera poses across different inspection times.
+- A common coordinate system is defined using **Reference images** obtained during the initial inspection.  
+- **Query images** captured during routine inspections are registered to the existing SfM model using the **hloc** algorithm.
+
 ---
 
 ## ⚡ Choose Your Path
@@ -18,13 +23,6 @@ Follow the [Method](#method) below to perform the entire SfM (Structure-from-Mot
 * **Download Raw Images:** [🔗 Raw Image Datasets (Dropbox)](링크:~)
 
 ---
-
-# Overview
-This step defines a common coordinate system and estimates camera poses across different inspection times.
-- A common coordinate system is defined using **Reference images** obtained during the initial inspection.  
-- **Query images** captured during routine inspections are registered to the existing SfM model using the **hloc** algorithm.
-
-
 
 # Dependencies
 
