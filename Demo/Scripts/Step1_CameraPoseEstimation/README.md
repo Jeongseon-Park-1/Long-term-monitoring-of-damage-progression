@@ -220,15 +220,6 @@ Data/Routine_inspection4_data/SfM/Dense/stereo/depth_maps
 ```
 During this step, depth maps are generated only for newly added query images.
 
-Note:
-Due to GitHub storage limitations, the pre-generated depthmaps are provided via an external link (e.g., Dropbox).
-- Dropbox (Depthmaps): https://www.dropbox.com/scl/fo/n6pjg93sxe7gnuzs9295i/AJSqq65PbKM4-HekqE6p5QU?rlkey=g8u45x7avcrt8wm4yrlwi8wfh&st=ztdr5dhq&dl=0
-
-After downloading, place the stereo directory at the following location:
-
-```
-Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\SfM\Dense\stereo
-```
 
 2. Copy the previously generated feature files:
 
