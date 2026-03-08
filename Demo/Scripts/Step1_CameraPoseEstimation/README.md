@@ -15,8 +15,11 @@ Rebuilding the workspace from raw reconstruction outputs is computationally expe
 Skip the reconstruction and proceed directly to **Step 2** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
 
 * **Download Datasets:**
-    * [MATLAB Workspace (.mat)]
-    * [Images & Depthmaps (under `Data/`)]
+    * MATLAB Workspace (.mat)
+    * Images & Depthmaps (under Data/)
+
+Download links for each dataset are provided inside the corresponding folders in the Data/ directory.
+
 * **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data/` directory, then proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
