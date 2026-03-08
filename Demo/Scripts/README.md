@@ -6,7 +6,6 @@
 > * **Direct Access to Processed Data:** To support full reproducibility and immediate verification, we provide the estimated camera parameters and dense depth maps:
 >     * **[.mat Files](링크:~)**: Estimated camera parameters.
 >     * **[.bin Files](링크:~)**: Depth maps.
-> * **Identical Results:** All results generated through this repository are **fully identical** to the specific cases presented in our paper, confirming that the pipeline maintains its integrity across the entire dataset.
 > * **Analysis Efficiency:** By providing these pre-computed parameters and depth maps, users can verify the 3D geometry and loosening quantification results without re-running the full reconstruction process.
 ---
 
@@ -82,6 +81,7 @@ Step 4: Quantification
 
 - All image data and large intermediate files are tracked using Git LFS.
 - File paths in the scripts are relative to the Demo directory.
+
 
 
 
