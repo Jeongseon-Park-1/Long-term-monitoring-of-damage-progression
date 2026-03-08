@@ -61,7 +61,7 @@ queryFiles = string(rawOutput{1});
 nQuery = numel(queryFiles);
 nRef = numel(refFiles);
 updateEvery = 1;
-sampleStep = 16;
+sampleStep = 1;
 topN = 5;
 
 BestPairs = strings(0,2);

@@ -6,5 +6,6 @@ This directory contains the essential datasets (Images, Depth maps, and Pre-comp
 
 ```text
 Data/
-├── Images/              # Images from bridge inspections (Reference & Query)
-└── Depthmaps/           # Pre-generated dense depth maps (.bin)
+├── Images/             # Images from bridge inspections (Reference & Query)
+├── Workspace/          # Images from bridge inspections (Reference & Query)
+└── Depthmaps/          # Pre-generated dense depth maps (.bin)
