@@ -7,7 +7,7 @@
 Rebuilding the workspace from raw reconstruction outputs is computationally expensive and time-consuming. Please choose one of the following options:
 
 ### **Option 1: Quick Start (Recommended)**
-Skip the reconstruction and proceed directly to **Step 2 (Quantification)** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
+Skip the reconstruction and proceed directly to **Step 2** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
 * **Download Pre-computed Data:** * [📦 Pre-saved MATLAB Workspace (.mat)](링크:~)
     * [📂 Pre-generated Depth Maps (.bin)](링크:~)
 * **Next Step:** After downloading, move the files to the `Data/` directory and proceed to **Step 2**.
