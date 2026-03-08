@@ -10,7 +10,7 @@ Rebuilding the workspace from raw reconstruction outputs is computationally expe
 Skip the reconstruction and proceed directly to **Step 2 (Quantification)** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
 * **Download Pre-computed Data:** * [📦 Pre-saved MATLAB Workspace (.mat)](링크:~)
     * [📂 Pre-generated Depth Maps (.bin)](링크:~)
-* **Next Step:** After downloading, move the files to the `Data/` directory and proceed to [Step 2]([../Step2_Quantification](https://github.com/Jeongseon-Park-1/Long-term-monitoring-of-damage-progression/tree/main/Demo/Scripts/Step2_SimilarityIndex)).
+* **Next Step:** After downloading, move the files to the `Data/` directory and proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
 Follow the [Method](#method) below to perform the entire SfM (Structure-from-Motion) and Localization process from scratch.
