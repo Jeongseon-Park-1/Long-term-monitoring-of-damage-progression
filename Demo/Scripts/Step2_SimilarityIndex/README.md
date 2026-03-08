@@ -53,7 +53,7 @@ What Step2.m does:
 
 ---
 
-## (Optional) Rebuild the workspace from raw reconstruction outputs
+## (Option 2) Rebuild the workspace from raw reconstruction outputs
 
 The following steps are required only when reproducing the pipeline from scratch using the full reconstruction data from Step 1.
 
