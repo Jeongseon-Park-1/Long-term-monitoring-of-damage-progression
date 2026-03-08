@@ -53,7 +53,7 @@ Long-term-monitoring-of-damage-progression/
 │  │  │  ├─ Helper/
 │  │  │  ├─ Segmentation_mask/      
 │  │  │  ├─ Step2.m
-│  │  │  ├─ workspace_step2.mat
+│  │  │  ├─ out_of_bridge.txt
 │  │  │  └─ README.md
 │  │  │
 │  │  ├─ Step3_Visualization/
