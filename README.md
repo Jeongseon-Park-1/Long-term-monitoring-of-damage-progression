@@ -1,19 +1,20 @@
 # Long-term Monitoring of Damage Progression
 
 <p align="justify">
-This repository presents a **research-oriented framework** for long-term monitoring of surface damage progression on bridges using **temporal UAV imagery**.
 
-The proposed pipeline integrates  
-**YOLOv8-based damage segmentation**, **structure-from-motion (SfM)**, and **hierarchical localization (hloc)**  
-to achieve **consistent damage detection, spatial alignment, and quantitative comparison** across multiple inspection times.
+This repository presents a <b>research-oriented framework</b> for long-term monitoring of surface damage progression on bridges using <b>temporal UAV imagery</b>.
 
-This repository emphasizes:
+The proposed pipeline integrates <b>YOLOv8-based damage segmentation</b>, <b>Structure-from-Motion (SfM)</b>, and <b>hierarchical localization (hloc)</b> to enable consistent damage detection, spatial alignment, and quantitative comparison across multiple inspection periods.
 
-- **Reproducibility** of the proposed workflow  
-- **Clear methodological understanding** for research-oriented use  
+The repository emphasizes:
 
-This implementation is intended to serve as a **lightweight yet complete reference** for researchers interested in UAV-based, vision-driven long-term damage assessment of bridge structures.
+- <b>Reproducibility</b> of the complete workflow  
+- <b>Clear methodological understanding</b> for research-oriented applications  
+
+This implementation provides a <b>lightweight yet comprehensive reference framework</b> for researchers working on UAV-based, vision-driven long-term damage assessment of bridge structures.
+
 </p>
+
 ---
 
 ## Overview
