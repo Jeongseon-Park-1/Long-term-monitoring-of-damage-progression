@@ -2,10 +2,10 @@
 
 # Overview
 
-This step quantitatively estimates the damage area from each query image using depth information and camera parameters.
+This step quantitatively estimates the damage area from each query image using depth maps and camera parameters.
 
-For each damage mask, pixel-wise depth values are used to estimate the local surface geometry.
-The physical area corresponding to each damaged pixel is computed and summed to obtain the total damage area.
+For each damage mask, pixel-wise depth values are used to estimate the local surface geometry.  
+The physical area of each damaged pixel is computed and summed to obtain the total damage area.
 
 
 # 📊 Quantitative Result

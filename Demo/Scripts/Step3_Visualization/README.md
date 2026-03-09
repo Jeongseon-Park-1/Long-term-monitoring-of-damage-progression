@@ -2,12 +2,10 @@
 
 # Overview
 
-This step visualizes the spatial relationship between query images with detected damage and their paired reference images.
+This step visualizes the spatial relationship between query images containing detected damage and the corresponding reference images.
 
-For each reference image selected in Step 2, all associated query images are projected onto the reference image using the estimated camera poses and depth information.
-Damage regions from different inspection times are overlaid with transparency, and their boundaries are drawn as smooth contours.
-
-This visualization allows intuitive inspection of damage location consistency, spatial overlap, and viewpoint similarity across inspections.
+For each reference image selected in Step 2, the associated query images are projected onto the reference image using the estimated camera poses and depthmaps.  
+Damage regions from different inspection times are overlaid with transparency, and their boundaries are represented as smooth contours.
 
 # 📊 Qualitative Result
 

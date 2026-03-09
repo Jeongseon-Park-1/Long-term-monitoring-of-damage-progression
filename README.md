@@ -47,7 +47,8 @@ Long-term-monitoring-of-damage-progression/
 │  │  ├─ Helper/                    # Shared MATLAB utility functions
 │  │  │
 │  │  ├─ Step1_CameraPoseEstimation/
-│  │  │  ├─ Data/                   
+│  │  │  ├─ Data/    
+│  │  │  ├─ Data_option2/                   
 │  │  │  ├─ extend.py
 │  │  │  └─ README.md
 │  │  │

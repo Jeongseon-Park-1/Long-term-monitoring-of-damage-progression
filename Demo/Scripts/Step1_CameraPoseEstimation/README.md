@@ -15,18 +15,16 @@ Rebuilding the workspace from raw reconstruction outputs is computationally expe
 Skip the reconstruction and proceed directly to **Step 2** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
 
 * **Download Datasets:**
-    * MATLAB Workspace (.mat)
-    * Images & Depthmaps (under Data/)
+    * Data/Workspace/.mat file
+    * Data/Images/.jpg files
+    * Data/Depthmaps/.bin files
 
 Download links for each dataset are provided inside the corresponding folders in the Data/ directory.
 
 * **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data/` directory, then proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
-Follow the [Method](#method) below to perform the entire SfM (Structure-from-Motion) and Localization process from scratch.
-* **Requirement:** Download the raw image datasets (2,509 images).
-* **Download Raw Images:** [🔗 Raw Image Datasets (Dropbox)]
-* **Action Required:** After downloading, save the files in the appropriate folders according to the directory structure.
+Follow the [Method (Option2)](#method) below to perform the entire SfM and localization process from scratch.
 
 ---
 
@@ -75,7 +73,7 @@ After placing the downloaded files into their corresponding folders, you can **s
 If you selected **Option 2**, follow the steps below to perform the entire SfM reconstruction and camera pose estimation process.
 
 First, reorganize the folder structure as shown below.  
-Then, download the images from Dropbox and place them into the corresponding query dataset folders under `Data/Images/`.
+Then, download the images from Dropbox and place them into the corresponding query dataset folders under `Data_option2/Images/`.
 
 The following relative directory structure is assumed:
 
@@ -109,7 +107,7 @@ Step1_CameraPoseEstimation
 1. Store reference images in:
 
 ```
-Data/Images/Reference/
+Data_option2/Images/Reference/
 ```
 
 and
@@ -122,8 +120,8 @@ cd Hierarchical-localization
 
 ```bash
 python -m hloc.extract_features \
-  --image_dir ../Data/Images/Reference \
-  --export_dir ../Data/Initial_inspection_data \
+  --image_dir ../Data_option2/Images/Reference \
+  --export_dir ../Data_option2/Initial_inspection_data \
   --conf superpoint_max
 ```
 
@@ -135,8 +133,8 @@ The generated feature filenames must remain consistent with subsequent steps.
 
 ```bash
 python -m hloc.extract_features \
-  --image_dir ../Data/Images/Reference \
-  --export_dir ../Data/Initial_inspection_data \
+  --image_dir ../Data_option2/Images/Reference \
+  --export_dir ../Data_option2/Initial_inspection_data \
   --conf netvlad
 ```
 
@@ -144,8 +142,8 @@ python -m hloc.extract_features \
 
 ```bash
 python -m hloc.pairs_from_retrieval \
-  --descriptors ../Data/Initial_inspection_data/global-feats-netvlad.h5 \
-  --output ../Data/Initial_inspection_data/pairs_5.txt \
+  --descriptors ../Data_option2/Initial_inspection_data/global-feats-netvlad.h5 \
+  --output ../Data_option2/Initial_inspection_data/pairs_5.txt \
   --num_matched 5
 ```
 
@@ -153,8 +151,8 @@ python -m hloc.pairs_from_retrieval \
 
 ```bash
 python -m hloc.match_features \
-  --pairs ../Data/Initial_inspection_data/pairs_5.txt \
-  --export_dir ../Data/Initial_inspection_data \
+  --pairs ../Data_option2/Initial_inspection_data/pairs_5.txt \
+  --export_dir ../Data_option2/Initial_inspection_data \
   --features feats-superpoint-n8192-rmax4000 \
   --conf superglue
 ```
@@ -163,11 +161,11 @@ python -m hloc.match_features \
 
 ```bash
 python -m hloc.extend \
-  --sfm_dir ../Data/Initial_inspection_data/SfM \
+  --sfm_dir ../Data_option2/Initial_inspection_data/SfM \
   --image_dir ../Data/Images/Reference \
-  --pairs ../Data/Initial_inspection_data/pairs_5.txt \
-  --features ../Data/Initial_inspection_data/feats-superpoint-n8192-rmax4000.h5 \
-  --matches ../Data/Initial_inspection_data/feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5.h5 \
+  --pairs ../Data_option2/Initial_inspection_data/pairs_5.txt \
+  --features ../Data_option2/Initial_inspection_data/feats-superpoint-n8192-rmax4000.h5 \
+  --matches ../Data_option2/Initial_inspection_data/feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5.h5 \
   --verify
 ```
 
@@ -202,7 +200,7 @@ This is required because query images are registered by extending the existing S
 Example (Query4):
 
 ```
-Data/Images/Query4/
+Data_option2/Images/Query4/
  ├─ Ref_0001.jpg
  ├─ Ref_0002.jpg
  ├─ ...
@@ -222,16 +220,16 @@ Data/Images/Query4/
 
 1. Store both reference and query images in:
 ```
-Data/Images/Query4/
+Data_option2/Images/Query4/
 ```
 Note:
 Copy the existing depth maps generated for the reference images from
 ```
-Data/Initial_inspection_data/SfM/Dense/stereo/depth_maps
+Data_option2/Initial_inspection_data/SfM/Dense/stereo/depth_maps
 ```
 to
 ```
-Data/Routine_inspection4_data/SfM/Dense/stereo/depth_maps
+Data_option2/Routine_inspection4_data/SfM/Dense/stereo/depth_maps
 ```
 During this step, depth maps are generated only for newly added query images.
 
@@ -244,35 +242,35 @@ During this step, depth maps are generated only for newly added query images.
 
 into:
 ```
-Data/Routine_inspection4_data/
+Data_option2/Routine_inspection4_data/
 ```
 
 3. Append local features:
 
 ```bash
 python -m hloc.extract_features \
-  --image_dir ../Data/Images/Query4 \
-  --export_dir ../Data/Routine_inspection4_data \
+  --image_dir ../Data_option2/Images/Query4 \
+  --export_dir ../Data_option2/Routine_inspection4_data \
   --conf superpoint_max \
-  --feature_path ../Data/Routine_inspection4_data/feats-superpoint-n8192-rmax4000.h5
+  --feature_path ../Data_option2/Routine_inspection4_data/feats-superpoint-n8192-rmax4000.h5
 ```
 
 4. Append global features:
 
 ```bash
 python -m hloc.extract_features \
-  --image_dir ../Data/Images/Query4 \
-  --export_dir ../Data/Routine_inspection4_data \
+  --image_dir ../Data_option2/Images/Query4 \
+  --export_dir ../Data_option2/Routine_inspection4_data \
   --conf netvlad \
-  --feature_path ../Data/Routine_inspection4_data/global-feats-netvlad.h5
+  --feature_path ../Data_option2/Routine_inspection4_data/global-feats-netvlad.h5
 ```
 
 5. Image retrieval:
 
 ```bash
 python -m hloc.pairs_from_retrieval \
-  --descriptors ../Data/Routine_inspection4_data/global-feats-netvlad.h5 \
-  --output ../Data/Routine_inspection4_data/pairs_5.txt \
+  --descriptors ../Data_option2/Routine_inspection4_data/global-feats-netvlad.h5 \
+  --output ../Data_option2/Routine_inspection4_data/pairs_5.txt \
   --num_matched 5
 ```
 
@@ -280,8 +278,8 @@ python -m hloc.pairs_from_retrieval \
 
 ```bash
 python -m hloc.match_features \
-  --pairs ../Data/Routine_inspection4_data/pairs_5.txt \
-  --export_dir ../Data/Routine_inspection4_data \
+  --pairs ../Data_option2/Routine_inspection4_data/pairs_5.txt \
+  --export_dir ../Data_option2/Routine_inspection4_data \
   --features feats-superpoint-n8192-rmax4000 \
   --conf superglue \
   --matches feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5
@@ -291,11 +289,11 @@ python -m hloc.match_features \
 
 ```bash
 python -m hloc.extend \
-  --sfm_dir ../Data/Routine_inspection4_data/SfM \
-  --image_dir ../Data/Images/Query4 \
-  --pairs ../Data/Routine_inspection4_data/pairs_5.txt \
-  --features ../Data/Routine_inspection4_data/feats-superpoint-n8192-rmax4000.h5 \
-  --matches ../Data/Routine_inspection4_data/feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5.h5 \
+  --sfm_dir ../Data_option2/Routine_inspection4_data/SfM \
+  --image_dir ../Data_option2/Images/Query4 \
+  --pairs ../Data_option2/Routine_inspection4_data/pairs_5.txt \
+  --features ../Data_option2/Routine_inspection4_data/feats-superpoint-n8192-rmax4000.h5 \
+  --matches ../Data_option2/Routine_inspection4_data/feats-superpoint-n8192-rmax4000_matches-superglue_pairs_5.h5 \
   --verify
 ```
 
@@ -309,7 +307,7 @@ python -m hloc.extend \
 9. Export the reconstructed COLMAP model in text format and save it under:
 
 ```bash
-Demo/Scripts/Step1_CameraPoseEstimation/Data/Routine_inspection4_data
+Demo/Scripts/Step1_CameraPoseEstimation/Data_option2/Routine_inspection4_data
 ```
 
 10. Prepare inputs for Step 2

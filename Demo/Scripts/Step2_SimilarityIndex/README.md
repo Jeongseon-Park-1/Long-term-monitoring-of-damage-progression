@@ -2,13 +2,15 @@
 
 # Overview
 
-This step identifies the most relevant reference image for each query image that contains detected damage.
+<p align="justify">
 
-Only query images with detected damage regions are considered.  
-For each such query image, all damage-mask pixels are projected into the coordinate systems of all reference images using the estimated camera parameters and depth maps.  
-The reference image that receives the largest number of valid projected pixels is selected as the most similar viewpoint and paired with the query image.
+This step identifies the most relevant reference image for each query image containing detected damage.
 
-This process enables robust association between query images and reference images captured from similar viewpoints, even under variations in camera position and inspection time.
+Only query images with detected damage are considered. For each query image, all pixels are projected onto the coordinate systems of the reference images using the estimated camera parameters and depth maps. The reference image receiving the largest number of valid projected pixels is selected as the most similar viewpoint.
+
+This process establishes a robust association between query and reference images captured from similar viewpoints, even under variations in camera position and inspection time.
+
+</p>
 
 # Dependency
 
@@ -32,9 +34,9 @@ load("Scripts\Step1_CameraPoseEstimation\Data\Workspace\workspace.mat")
 ```
 This file includes the required variables for Step 2, such as:
 
-- camera intrinsic parameters
-- camera extrinsic parameters
-- depthmaps
+- Camera intrinsic parameters
+- Camera extrinsic parameters
+- Depthmaps
 
 3. Run Step2.m to compute the similarity index and generate query–reference pairs.
 
@@ -43,16 +45,15 @@ run("Scripts\Step2_SimilarityIndex\Step2.m")
 ```
 
 What Step2.m does:
-- extracts GNSS metadata from images and computes the physical scale (scale conversion factor, SCF) by aligning camera optical centers with GNSS coordinates using the Procrustes method.
+- Extracts GNSS metadata from images and computes the physical scale (scale conversion factor, SCF) by aligning camera optical centers with GNSS coordinates using the Procrustes method.
  
 * **Note:** The file `out_of_bridge.txt` in the `Step2_SimilarityIndex` folder contains images manually identified during the initial inspection as being captured from the outer boundary of the bridge. Only these images are used for the Procrustes alignment because their GNSS measurements are more reliable.
 
-- reads damage masks for query images
-- identifies query images listed in `Segmentation_mask/Damage_detected_images.txt`
-- projects pixels from each of these query images into all reference images
-- counts valid projected pixels per reference image
-- selects the reference image with the maximum count
-- saves the best match as a query–reference pair
+- Reads damage masks for query images
+- Identifies query images listed in `Segmentation_mask/Damage_detected_images.txt` and projects pixels from each of these query images into all reference images
+- Counts valid projected pixels per reference image
+- Selects the reference image with the maximum count
+- Saves the best match as a query–reference pair
 
 ---
 
@@ -64,14 +65,14 @@ The following steps are required only when reproducing the pipeline from scratch
 
 ```matlab
 extractImageHeader( ...
-    "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt", ...
-    "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt")
+    "Scripts\Step1_CameraPoseEstimation\Data_option2\Routine_inspection4_data\images.txt", ...
+    "Scripts\Step1_CameraPoseEstimation\Dataoption2\Routine_inspection4_data\images.txt")
 ```
 2. load camera intrinsic parameters, camera extrinsic parameters, and depth maps into the MATLAB workspace:
 
 ```matlab
 saveDepthMaps("path_to_depthmaps", "Depthmaps")
-saveCameraIntrinsics("updated_extrinsics_txt_path", "Depthmaps", "CameraIntParams")
+saveCameraIntrinsics("updated_extrinsics_txt_path","intrinsics_txt_path", "Depthmaps", "CameraIntParams")
 saveCameraExtrinsics("CameraExtParams", "updated_extrinsics_txt_path")
 ```
 
@@ -83,14 +84,14 @@ saveDepthMaps( ...
     "Depthmaps")
 
 saveCameraIntrinsics( ...
-    "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt", ...
-    "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\cameras.txt", ...
+    "Scripts\Step1_CameraPoseEstimation\Data_option2\Routine_inspection4_data\images.txt", ...
+    "Scripts\Step1_CameraPoseEstimation\Data_option2\Routine_inspection4_data\cameras.txt", ...
     "Depthmaps", ...
     "CameraIntParams")
 
 saveCameraExtrinsics( ...
     "CameraExtParams", ...
-    "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt")
+    "Scripts\Step1_CameraPoseEstimation\Data_option2\Routine_inspection4_data\images.txt")
 ```
 3. After loading these variables into the MATLAB workspace, run Step 2:
 
