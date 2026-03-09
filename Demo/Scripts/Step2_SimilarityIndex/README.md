@@ -71,7 +71,7 @@ extractImageHeader( ...
 2. load camera intrinsic parameters, camera extrinsic parameters, and depth maps into the MATLAB workspace:
 
 ```matlab
-saveDepthMaps("path_to_depthmaps", "Depthmaps")
+saveDepthMapFileList("path_to_depthmaps", "Depthmaps")
 saveCameraIntrinsics("updated_extrinsics_txt_path","intrinsics_txt_path", "Depthmaps", "CameraIntParams")
 saveCameraExtrinsics("CameraExtParams", "updated_extrinsics_txt_path")
 ```
