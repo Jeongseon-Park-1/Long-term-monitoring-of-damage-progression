@@ -70,7 +70,6 @@ Download the datasets for **Option 1** using the links provided in the `Data/` d
 After placing the downloaded files into the corresponding folders, load the workspace file as follows:
 ```matlab
 load("Scripts\Step1_CameraPoseEstimation\Data\Workspace\workspace.mat")
-saveDepthmapFileList("Scripts\Step1_CameraPoseEstimation\Data\Depthmaps", "Depthmaps")
 ```
 
 This process saves the required variables for Step 2, such as:
