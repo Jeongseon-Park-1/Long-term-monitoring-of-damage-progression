@@ -15,7 +15,7 @@ The training data consist of bridge damage images and corresponding segmentation
 
 The datasets used for training are publicly available and can be downloaded from the following links.
 
-- **DACL10K Dataset**  
+- **dacl10K Dataset**  
   https://github.com/phiyodr/dacl10k-toolkit
 
 - **J-Stage Bridge Damage Segmentation Dataset**  
