@@ -48,7 +48,8 @@ What Step2.m does:
 * **Note:** The file `out_of_bridge.txt` in the `Step2_SimilarityIndex` folder contains images manually identified during the initial inspection as being captured from the outer boundary of the bridge. Only these images are used for the Procrustes alignment because their GNSS measurements are more reliable.
 
 - reads damage masks for query images
-- projects damaged pixels from each query into all reference images
+- identifies query images listed in `Segmentation_mask/Damage_detected_images.txt`
+- projects pixels from each of these query images into all reference images
 - counts valid projected pixels per reference image
 - selects the reference image with the maximum count
 - writes the best match as a query–reference pair
