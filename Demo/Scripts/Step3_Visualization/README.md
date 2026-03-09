@@ -39,6 +39,6 @@ run("Scripts\Step3_Visualization\Step3.m")
 ```
 
 This script performs the following operations:
-- projects damage regions from query images onto the paired reference image
+- projects damage masks from query images onto the paired reference image
 - overlays projected regions with transparency
 - draws smooth contours to show damage boundaries
