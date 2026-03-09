@@ -72,8 +72,7 @@ Long-term-monitoring-of-damage-progression/
 │
 ├─ Instance_segmentation/
 │  ├─ train_seg.py                  # YOLOv8 training script
-│  └─ data/
-│     └─ data.yaml
+│  └─ data.yaml
 │
 ├─ README.md                        # Project overview
 ├─ .gitattributes
