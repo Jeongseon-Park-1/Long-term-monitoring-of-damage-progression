@@ -37,25 +37,25 @@ The following table compares the results from this GitHub demo against the origi
 <tr>
 <td rowspan="4" align="center"><b>Water leakage</b></td>
 <td align="center">Query #1</td>
-<td align="center">942.92<br>(1.18%)</td>
+<td align="center">944.20<br>(1.32%)</td>
 <td align="center">943.87<br>(1.29%)</td>
 <td align="center">931.89</td>
 </tr>
 <tr>
 <td align="center">Query #2</td>
-<td align="center">1321.56<br>(-3.70%)</td>
+<td align="center">1315.21<br>(-4.16%)</td>
 <td align="center">1338.35<br>(-2.47%)</td>
 <td align="center">1372.30</td>
 </tr>
 <tr>
 <td align="center">Query #3</td>
-<td align="center">4153.62<br>(-0.58%)</td>
+<td align="center">4126.64<br>(-1.23%)</td>
 <td align="center">4149.65<br>(-0.67%)</td>
 <td align="center">4177.84</td>
 </tr>
 <tr>
 <td align="center">Query #4</td>
-<td align="center">16671.72<br>(4.12%)</td>
+<td align="center">16639.87<br>(3.92%)</td>
 <td align="center">16695.23<br>(4.26%)</td>
 <td align="center">16012.65</td>
 </tr>
