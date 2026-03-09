@@ -52,7 +52,7 @@ What Step2.m does:
 - projects pixels from each of these query images into all reference images
 - counts valid projected pixels per reference image
 - selects the reference image with the maximum count
-- writes the best match as a query–reference pair
+- saves the best match as a query–reference pair
 
 ---
 
