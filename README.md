@@ -1,5 +1,6 @@
 # Long-term Monitoring of Damage Progression
 
+<p align="justify">
 This repository presents a **research-oriented framework** for long-term monitoring of surface damage progression on bridges using **temporal UAV imagery**.
 
 The proposed pipeline integrates  
@@ -12,7 +13,7 @@ This repository emphasizes:
 - **Clear methodological understanding** for research-oriented use  
 
 This implementation is intended to serve as a **lightweight yet complete reference** for researchers interested in UAV-based, vision-driven long-term damage assessment of bridge structures.
-
+</p>
 ---
 
 ## Overview
