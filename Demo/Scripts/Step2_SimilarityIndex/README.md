@@ -30,7 +30,7 @@ Instead, the required variables are provided as a pre-saved MATLAB workspace fil
 
 Load the workspace file as follows:
 ```matlab
-load("Scripts\Step1_CameraPoseEstimation\Data\Workspace\workspace.mat")
+load("Scripts\Step1_CameraPoseEstimation\Data_option1\Workspace\workspace.mat")
 ```
 This file includes the required variables for Step 2, such as:
 
