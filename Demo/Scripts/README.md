@@ -2,9 +2,9 @@
 
 > [!IMPORTANT]
 > ### 🔍 Authenticity & Reproducibility
-> * **Full Data Utilization:** This repository utilizes the complete dataset of **2,509 images** curated from actual routine bridge inspections, ensuring the robustness and accuracy of the proposed quantification pipeline.
-> * **Direct Access to Processed Data:** To support full reproducibility and immediate verification, we provide the estimated camera parameters and Depthmaps:
-> * **Analysis Efficiency:** By providing these pre-computed parameters and depth maps, users can verify the 3D geometry and loosening quantification results without re-running the full reconstruction process.
+> * **Full Data Utilization:** This repository utilizes the full datasets of **2,509 images** curated from routine bridge inspections, ensuring the robustness and accuracy of the proposed framework.
+> * **Direct Access to Processed Data:** To support full reproducibility, we provide the estimated camera parameters and Depthmaps:
+> * **Analysis Efficiency:** By providing these pre-computed parameters and depthmaps, users can verify the 3D geometry and results of damage assessments without re-running the full reconstruction process.
 ---
 
 # ⚠️ Quick Start (Recommended) ⚠️
@@ -79,6 +79,7 @@ Step 4: Quantification
 # Notes
 
 - File paths in the scripts are relative to the Demo directory.
+
 
 
 
