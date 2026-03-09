@@ -92,3 +92,10 @@ saveCameraExtrinsics( ...
     "CameraExtParams", ...
     "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt")
 ```
+3. After loading these variables into the MATLAB workspace, run Step 2:
+
+```matlab
+run("Scripts\Step2_SimilarityIndex\Step2.m")
+```
+
+This script computes the similarity index and generates the query–reference image pairs.
