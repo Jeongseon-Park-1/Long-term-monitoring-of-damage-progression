@@ -157,7 +157,7 @@ The full set of **initial inspection images** and **routine inspection images** 
 
 These images are provided to support reproducibility of the proposed pipeline.  
 
-Researchers interested in accessing the complete dataset for academic purposes may also contact the authors.
+Researchers interested in accessing the this datasets for academic purposes may also contact the authors.
 
 - Email: mn2383@seoultech.ac.kr
 
