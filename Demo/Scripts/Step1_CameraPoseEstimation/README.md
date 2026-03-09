@@ -24,7 +24,7 @@ Download links for each dataset are provided inside the corresponding folders in
 * **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data/` directory, then proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
-Follow the [Method (Option2)](#method) below to perform the entire SfM and localization process from scratch.
+Follow the [Method (Option2)](#method) below to perform the entire SfM and hloc process from scratch.
 
 ---
 
