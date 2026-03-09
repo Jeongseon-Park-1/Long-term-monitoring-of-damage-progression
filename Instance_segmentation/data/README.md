@@ -21,4 +21,4 @@ The datasets used for training are publicly available and can be downloaded from
 - **J-Stage Bridge Damage Segmentation Dataset**  
   https://jstagedata.jst.go.jp/articles/dataset/Training_images_for_semantic_segmentation_of_bridge_damage_detection/24750210
 
-These datasets provide bridge damage images together with segmentation masks used for training the instance segmentation model.
+These datasets provide bridge damage images with segmentation masks used for training the instance segmentation model.
