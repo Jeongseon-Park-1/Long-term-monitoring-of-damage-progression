@@ -8,7 +8,7 @@ The proposed workflow integrates <b>instance segmentation</b>, <b>Structure-from
 
 In particular, the framework performs:
 
-- <b>Qualitative damage assessment</b> by grouping a time series of images capturing the same damage and mapping the detected pixels onto a common coordinate system  
+- <b>Qualitative damage assessment</b> by grouping a time series of images which capture the same damage and mapping the detected pixels onto a common coordinate system  
 - <b>Quantitative damage assessment</b> by estimating the physical scale using GNSS data and calculating the damage area through a plane fitting algorithm  
 
 The repository is intended to provide a clear and reproducible implementation of the proposed methodology for research on UAV-based long-term damage assessments.
@@ -47,7 +47,7 @@ Long-term-monitoring-of-damage-progression/
 │  │  ├─ Helper/                    # Shared MATLAB utility functions
 │  │  │
 │  │  ├─ Step1_CameraPoseEstimation/
-│  │  │  ├─ Data/    
+│  │  │  ├─ Data_option1/    
 │  │  │  ├─ Data_option2/                   
 │  │  │  ├─ extend.py
 │  │  │  └─ README.md
@@ -86,7 +86,7 @@ Long-term-monitoring-of-damage-progression/
 - Step1_CameraPoseEstimation/: Preparation of camera poses and geometric information based on SfM results.
 - Step2_SimilarityIndex/: Similarity index computation and selection of corresponding reference–query image pairs.
 - Step3_Visualization/: Visualization of damage progression during different inspection times.
-- Step4_Quantification/: Quantification of damage in physical scale based on plane fitting.
+- Step4_Quantification/: Quantification of damage in physical scale based on a plane fitting.
 - Instance_segmentation/: Training scripts and configuration files for the YOLOv8-based damage instance segmentation model.
 
 ---
@@ -95,7 +95,7 @@ Long-term-monitoring-of-damage-progression/
 
 ### Damage Segmentation (YOLOv8)
 
-Surface damage is identified using a **YOLOv8-based instance segmentation model** trained to detect damage types commonly observed on concrete bridge surfaces.
+Surface damage is identified using a **YOLOv8-based instance segmentation model** trained to detect damage commonly observed on bridge surfaces.
 
 - Model: YOLOv8-seg  
 - Damage types: crack, spalling, water leakage (custom)
@@ -138,7 +138,7 @@ https://github.com/cvg/Hierarchical-Localization
 
 ## Demo (Reproducible Example)
 
-This demno is provided to allow users to directly reproduce the core visualization and quantification process.
+This demo is provided to allow users to directly reproduce the core visualization and quantification process.
 
 The demo assumes that:
 - SfM reconstruction has already been performed 
@@ -158,7 +158,7 @@ The full set of **initial inspection images** and **routine inspection images** 
 
 These images are provided to support reproducibility of the proposed pipeline.  
 
-Researchers interested in accessing the this datasets for academic purposes may also contact the authors.
+Researchers interested in accessing the these datasets for academic purposes may also contact the authors.
 
 - Email: mn2383@seoultech.ac.kr
 

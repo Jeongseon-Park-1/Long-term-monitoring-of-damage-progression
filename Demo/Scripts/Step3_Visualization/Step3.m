@@ -3,7 +3,8 @@ clc;
 thisDir  = fileparts(mfilename("fullpath"));
 demoRoot = fileparts(fileparts(thisDir));
 
-imgFolder = "F:\3rd_revision\images";
+imgFolder = fullfile(demoRoot, ...
+    "Scripts","Step1_CameraPoseEstimation","Data_option1","Images");
 
 maskFolder = fullfile(demoRoot, ...
     "Scripts","Step2_SimilarityIndex","Segmentation_mask");

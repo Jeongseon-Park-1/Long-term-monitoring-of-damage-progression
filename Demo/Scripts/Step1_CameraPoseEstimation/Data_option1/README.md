@@ -5,7 +5,7 @@ This directory contains the essential datasets (Images, Depth maps, and pre-comp
 ## 📂 File Structure
 
 ```text
-Data/
+Data_option1/
 ├── Images/      # Images from bridge inspections (Reference & Query)
 ├── Workspace/
 └── Depthmaps/   # Pre-generated dense depth maps (.bin)

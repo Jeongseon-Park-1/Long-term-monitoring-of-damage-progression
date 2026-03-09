@@ -15,13 +15,13 @@ Rebuilding the workspace from raw reconstruction outputs is computationally expe
 Skip the reconstruction and proceed directly to **Step 2** using our pre-computed results. We provide the estimated camera poses, parameters, and depth maps in a pre-saved MATLAB workspace.
 
 * **Download Datasets:**
-    * Data/Workspace/.mat file
-    * Data/Images/.jpg files
-    * Data/Depthmaps/.bin files
+    * Data_option1/Workspace/.mat file
+    * Data_option1/Images/.jpg files
+    * Data_option1/Depthmaps/.bin files
 
 Download links for each dataset are provided inside the corresponding folders in the Data/ directory.
 
-* **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data/` directory, then proceed to **Step 2**.
+* **Action Required:** After downloading, ensure the images and depth maps are saved in their respective folders within the `Data_option1/` directory, then proceed to **Step 2**.
 
 ### **Option 2: Full Reconstruction (Manual Process)**
 Follow the [Method (Option2)](#method) below to perform the entire SfM and hloc process from scratch.
@@ -62,7 +62,7 @@ COLMAP GUI is used for:
 
 ## (Option 1) Quick Start (Recommended)
 
-If you selected **Option 1**, simply download the pre-computed datasets provided in the `Data/` directory.
+If you selected **Option 1**, simply download the pre-computed datasets provided in the `Data_option1/` directory.
 
 After placing the downloaded files into their corresponding folders, you can **skip Step 1 entirely** and proceed directly to **Step 2**.
 
@@ -314,13 +314,13 @@ Demo/Scripts/Step1_CameraPoseEstimation/Data_option2/Routine_inspection4_data
 Finally, place all images used in the reconstruction in:
 
 ```
-Data/Images
+Data_option1/Images
 ```
 
 and place all generated depth maps in:
 
 ```
-Data/Depthmaps
+Data_option1/Depthmaps
 ```
 
 Then proceed to **Step 2**.

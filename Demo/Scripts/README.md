@@ -49,14 +49,14 @@ Demo/
 Step 1: Camera Pose Estimation
 
 - Registers reference and query images using hloc and COLMAP
-- Estimates camera intrinsics, extrinsics, and depth maps
+- Estimates camera intrinsics, extrinsics, and depthmaps
 
 📁 Scripts/Step1_CameraPoseEstimation/
 
 Step 2: Similarity Index
 
 - Extracts GNSS information from images and aligns the scale of the SfM model using the Procrustes method
-- Projects damaged pixels from query images into all reference images
+- Projects detected pixels from query images into all reference images
 - Selects the reference image with the largest number of valid projections
 - Generates query–reference image pairs
 
@@ -71,7 +71,7 @@ Step 3: Visualization
 Step 4: Quantification
 
 - Estimates damage area and geometric metrics in 3D
-- Uses depth maps and plane fitting for metric quantification
+- Uses depthmaps and a plane fitting for metric quantification
 
 📁 Scripts/Step4_Quantification/
 
