@@ -62,6 +62,18 @@ COLMAP GUI is used for:
 
 # Method
 
+(Option 1) Quick Start (Recommended)
+
+If you selected **Option 1**, simply download the pre-computed datasets provided in the `Data/` directory.
+
+After placing the downloaded files into their corresponding folders, you can **skip Step 1 entirely** and proceed directly to **Step 2**.
+
+---
+
+(Option 2) Full Reconstruction (Manual Process)
+
+If you selected **Option 2**, follow the steps below to perform the entire SfM reconstruction and camera pose estimation process.
+
 First, reorganize the folder structure as shown below.  
 Then, download the images from Dropbox and place them into the corresponding query dataset folders under `Data/Images/`.
 
