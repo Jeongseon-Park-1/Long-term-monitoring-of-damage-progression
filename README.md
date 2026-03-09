@@ -2,7 +2,7 @@
 
 <p align="justify">
 
-This repository provides an implementation of a framework for the long-term monitoring of structural damage using UAV imagery acquired during routine bridge inspections.
+This repository provides an implementation of a framework for the long-term monitoring of structural damage using UAV imagery acquired from routine inspections for bridge.
 
 The proposed workflow integrates <b>instance segmentation</b>, <b>Structure-from-Motion (SfM)</b>, and <b>hierarchical localization (hloc)</b> to localize structural damage and track its progression over time under different camera views and inspection conditions.
 
