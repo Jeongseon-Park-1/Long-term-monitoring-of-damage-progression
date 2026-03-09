@@ -66,7 +66,7 @@ The following steps are required only when reproducing the pipeline from scratch
 ```matlab
 extractImageHeader( ...
     "Scripts\Step1_CameraPoseEstimation\Data_option2\Routine_inspection4_data\images.txt", ...
-    "Scripts\Step1_CameraPoseEstimation\Dataoption2\Routine_inspection4_data\images.txt")
+    "Scripts\Step1_CameraPoseEstimation\Data_option2\Routine_inspection4_data\images.txt")
 ```
 2. load camera intrinsic parameters, camera extrinsic parameters, and depth maps into the MATLAB workspace:
 
