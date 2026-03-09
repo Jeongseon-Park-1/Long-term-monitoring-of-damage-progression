@@ -80,12 +80,12 @@ Long-term-monitoring-of-damage-progression/
 ```
 
 - Demo/: Step-by-step demo pipeline for visualization and quantitative analysis of surface damage progression.
-- Demo/Scripts/: MATLAB scripts implementing the core workflow from camera pose estimation to damage quantification.
-- Demo/Scripts/Helper/: Shared MATLAB utility functions for coordinate transformation, depth handling, plane estimation, and visualization.
+- Demo/Scripts/: MATLAB & Python scripts for damage assessments.
+- Demo/Scripts/Helper/: Functions used to support the main framework.
 - Step1_CameraPoseEstimation/: Preparation of camera poses and geometric information based on SfM results.
 - Step2_SimilarityIndex/: Similarity index computation and selection of corresponding reference–query image pairs.
-- Step3_Visualization/: Projection and visualization of segmented damage regions across different inspection times.
-- Step4_Quantification/: Quantitative measurement of damage attributes based on the projected results.
+- Step3_Visualization/: Visualization of damage progression during different inspection times.
+- Step4_Quantification/: Quantification of damage in physical scale based on plane fitting.
 - Instance_segmentation/: Training scripts and configuration files for the YOLOv8-based damage instance segmentation model.
 
 ---
@@ -155,7 +155,8 @@ The full set of **initial inspection images** and **routine inspection images** 
 - Dropbox (Initial and Routine Inspection Images):  
   https://www.dropbox.com/scl/fo/g4ahvivb0yth20ewehwgr/AJEZW_NpcgJocoW_Zm26j30?rlkey=kffg6qsbavgh6cndw2a2r9m6f&st=68wfhq5j&dl=0
 
-These images are provided to support transparency and reproducibility of the proposed pipeline.  
+These images are provided to support reproducibility of the proposed pipeline.  
+
 Researchers interested in accessing the complete dataset for academic purposes may also contact the authors.
 
 - Email: mn2383@seoultech.ac.kr
