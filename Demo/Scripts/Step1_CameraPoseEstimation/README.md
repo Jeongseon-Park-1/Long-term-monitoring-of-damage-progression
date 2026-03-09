@@ -296,3 +296,19 @@ python -m hloc.extend \
 ```bash
 Demo/Scripts/Step1_CameraPoseEstimation/Data/Routine_inspection4_data
 ```
+
+10. Prepare inputs for Step 2
+
+Finally, place all images used in the reconstruction in:
+
+```
+Data/Images
+```
+
+and place all generated depth maps in:
+
+```
+Data/Depthmaps
+```
+
+Then proceed to **Step 2**.
