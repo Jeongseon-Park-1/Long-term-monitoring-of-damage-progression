@@ -216,7 +216,7 @@ run("Scripts\Step4_Quantification\Step4.m")
 ```
 
 This script performs the following operations:
-- reads damage masks for each query image
-- estimates a plane of each damage mask using depth values and RANSAC
-- converts damaged pixels to physical area using camera intrinsics and SCF
-- computes the total damage area for each image
+- Reads damage masks for each query image
+- Estimates a plane of each damage mask using depth values and RANSAC
+- Converts damaged pixels to physical area using camera intrinsics and SCF
+- Computes the total damage area for each image
