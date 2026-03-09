@@ -4,7 +4,7 @@ thisDir  = fileparts(mfilename("fullpath"));
 demoRoot = fileparts(fileparts(thisDir));
 
 imgFolder = fullfile(demoRoot, ...
-    "Scripts","Step1_CameraPoseEstimation","Data_option1","Images");
+    "Scripts","Step1_CameraPoseEstimation","Data","Images");
 
 maskFolder = fullfile(demoRoot, ...
     "Scripts","Step2_SimilarityIndex","Segmentation_mask");

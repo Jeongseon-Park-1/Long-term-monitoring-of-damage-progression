@@ -3,10 +3,10 @@ clc
 thisDir = fileparts(mfilename("fullpath"));
 demoRoot = fileparts(fileparts(thisDir));
 
-imageDir = fullfile(demoRoot,"Data_option1","Images");
+imageDir = fullfile(demoRoot,"Data","Images");
 listPath = fullfile(demoRoot,"Scripts","Step2_SimilarityIndex","out_of_bridge.txt");
 depthFolderPath = fullfile(demoRoot, ...
-    "Scripts","Step1_CameraPoseEstimation","Data_option1","Depthmaps");
+    "Scripts","Step1_CameraPoseEstimation","Data","DepthmapFiles");
 
 try
     SCF = scalefactor(imageDir,listPath);
