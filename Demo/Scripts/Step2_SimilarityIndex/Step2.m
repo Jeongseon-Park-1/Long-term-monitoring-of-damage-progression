@@ -6,7 +6,7 @@ demoRoot = fileparts(fileparts(thisDir));
 imageDir = fullfile(demoRoot,"Data","images");
 listPath = fullfile(demoRoot,"Scripts","Step2_SimilarityIndex","out_of_bridge.txt");
 depthFolderPath = fullfile(demoRoot, ...
-    "Scripts","Step1_CameraPoseEstimation","Data","Depthmaps");
+    "Scripts","Step1_CameraPoseEstimation","Data_option1","Depthmaps");
 
 try
     SCF = scalefactor(imageDir,listPath);
