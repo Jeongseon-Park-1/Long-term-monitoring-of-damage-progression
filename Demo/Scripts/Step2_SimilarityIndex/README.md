@@ -18,6 +18,8 @@ The authors used the following environment:
 
 # Method
 
+## (Option 1) Load the pre-saved workspace (recommended for the demo)
+
 1. Add all subfolders under the `Demo` directory to the MATLAB path so that all helper functions can be accessed.
 
 2. Load the pre-saved workspace (recommended for the demo)
@@ -57,14 +59,14 @@ What Step2.m does:
 
 The following steps are required only when reproducing the pipeline from scratch using the full reconstruction data from Step 1.
 
-First, replace the images.txt file exported in Step 1 by extracting and reformatting the image header information:
+1. replace the images.txt file exported in Step 1 by extracting and reformatting the image header information:
 
 ```matlab
 extractImageHeader( ...
     "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt", ...
     "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\images.txt")
 ```
-Then, load camera intrinsic parameters, camera extrinsic parameters, and depth maps into the MATLAB workspace:
+2. load camera intrinsic parameters, camera extrinsic parameters, and depth maps into the MATLAB workspace:
 
 ```matlab
 saveDepthMaps("path_to_depthmaps", "Depthmaps")
@@ -76,7 +78,7 @@ Example used in this study:
 
 ```matlab
 saveDepthMaps( ...
-    "Scripts\Step1_CameraPoseEstimation\Data\Routine_inspection4_data\SfM\Dense\stereo\depth_maps", ...
+    "Scripts\Step1_CameraPoseEstimation\Data\Depth_maps", ...
     "Depthmaps")
 
 saveCameraIntrinsics( ...
