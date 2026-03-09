@@ -33,7 +33,7 @@ The core components of the pipeline are:
 
 This repository focuses on providing:
 - Source code    
-- Representative images  
+- Full set of images for routine inspections 
 
 ---
 
@@ -111,7 +111,7 @@ https://github.com/ultralytics/ultralytics
 
 The reconstructed SfM model provides:
 - Camera poses  
-- 3D point clouds  
+- 3D point cloud  
 - A shared common coordinate system  
 
 COLMAP:  
