@@ -62,31 +62,34 @@ COLMAP GUI is used for:
 
 # Method
 
+First, reorganize the folder structure as shown below.  
+Then, download the images from Dropbox and place them into the corresponding query dataset folders under `Data/Images/`.
+
 The following relative directory structure is assumed:
 
 ```
 Step1_CameraPoseEstimation
 │
 ├─ Data/
-│ ├─ Images/
-│ │ ├─ Reference/
-│ │ ├─ Query1/
-│ │ ├─ Query2/
-│ │ ├─ Query3/
-│ │ └─ Query4/
-│ │
-│ ├─ Initial_inspection__data/
-│ └─ Routine_inspection4_data/
+│  ├─ Images/
+│  │  ├─ Reference/
+│  │  ├─ Query1/
+│  │  ├─ Query2/
+│  │  ├─ Query3/
+│  │  └─ Query4/
+│  │
+│  ├─ Initial_inspection_data/
+│  └─ Routine_inspection4_data/
 │
 ├─ extend.py
 │
 ├─ Hierarchical-localization/ (clone this repository)
-│ ├─ hloc/
-│ │ ├─ extract_features.py
-│ │ ├─ match_features.py
-│ │ ├─ pairs_from_retrieval.py
-│ │ └─ extend.py (copied from the original file)
-   ...
+│  ├─ hloc/
+│  │  ├─ extract_features.py
+│  │  ├─ match_features.py
+│  │  ├─ pairs_from_retrieval.py
+│  │  └─ extend.py (copied from the original file)
+│  ...
 ```
 
 ## Reference Image Registration (Initial Inspection)
