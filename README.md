@@ -4,11 +4,11 @@
 
 This repository provides an implementation of a framework for the long-term monitoring of structural damage using UAV imagery acquired from routine inspections for bridge.
 
-The proposed workflow integrates <b>instance segmentation</b>, <b>Structure-from-Motion (SfM)</b>, and <b>hierarchical localization (hloc)</b> to localize structural damage and track its progression over time under different camera views and inspection conditions.
+The proposed workflow integrates <b>instance segmentation</b>, <b>Structure-from-Motion (SfM)</b>, and <b>hierarchical localization (hloc)</b> to track structural damage progression under different camera view points.
 
 In particular, the framework performs:
 
-- <b>Qualitative damage assessment</b> by grouping a time series of images capturing the same damage and mapping the corresponding pixels onto a common coordinate system  
+- <b>Qualitative damage assessment</b> by grouping a time series of images capturing the same damage and mapping the detected pixels onto a common coordinate system  
 - <b>Quantitative damage assessment</b> by estimating the physical scale using GNSS data and calculating the damage area through a plane fitting algorithm  
 
 The repository is intended to provide a clear and reproducible implementation of the proposed methodology for research on UAV-based long-term damage assessments.
