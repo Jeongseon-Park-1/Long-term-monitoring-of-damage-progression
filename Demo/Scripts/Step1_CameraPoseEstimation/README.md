@@ -72,7 +72,7 @@ After placing the downloaded files into their corresponding folders, you can **s
 
 If you selected **Option 2**, follow the steps below to perform the entire SfM reconstruction and camera pose estimation process.
 
-Users can download the images from Dropbox and place them into the corresponding query dataset folders under `Data_option2/Images/`.
+Users can download the images from the links provided in the `Data_option2/Images/` folder.
 
 The following relative directory structure is assumed:
 
