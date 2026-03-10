@@ -217,10 +217,6 @@ for q = 1:nQuery
     Top5Pairs(end).Scores = topScores;
 
     fprintf("   done -> best ref: %s | overlap: %d\n", topRefs(1), topScores(1));
-    fprintf("   Top %d refs:\n", keepN);
-    for k = 1:keepN
-        fprintf("      %d) %s | %d\n", k, topRefs(k), topScores(k));
-    end
 end
 
 assignin("base","BestPairs",BestPairs);
