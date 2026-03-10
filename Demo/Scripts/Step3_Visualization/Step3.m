@@ -301,7 +301,7 @@ for r = 1:numel(uniqueRefs)
                  ((vM(validIdx)-Kq.cy)./Kq.fy).*zM_raw(validIdx), ...
                   zM_raw(validIdx)];
 
-        [model, ~] = ransacfitplane(pts_c', 0.0001);
+        [model, ~] = ransacfitplane(pts_c', 0.001);
         if isempty(model)
             continue
         end
