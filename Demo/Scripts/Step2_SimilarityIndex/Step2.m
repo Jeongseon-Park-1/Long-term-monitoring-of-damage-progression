@@ -228,7 +228,6 @@ fprintf("Final BestPairs: %d\n\n", size(BestPairs,1));
 disp("Best Matching Pairs:");
 disp(BestPairs);
 
-disp("Top5Pairs saved to base workspace.");
 
 function Depthmaps = saveDepthMapFileList(folderPath, outputVarName)
 if nargin < 2 || strlength(string(outputVarName)) == 0
