@@ -1,6 +1,10 @@
 clc
 
-load("Scripts\Step1_CameraPoseEstimation\Data\Workspace\workspace.mat");
+workspacePath = "Scripts\Step1_CameraPoseEstimation\Data\Workspace\workspace.mat";
+
+if exist(workspacePath, "file")
+    load(workspacePath);
+end;
 
 thisDir = fileparts(mfilename("fullpath"));
 demoRoot = fileparts(fileparts(thisDir));
@@ -63,7 +67,7 @@ queryFiles = string(rawOutput{1});
 nQuery = numel(queryFiles);
 nRef = numel(refFiles);
 updateEvery = 1;
-sampleStep = 1;
+sampleStep = 16;
 topN = 5;
 
 BestPairs = strings(0,2);
