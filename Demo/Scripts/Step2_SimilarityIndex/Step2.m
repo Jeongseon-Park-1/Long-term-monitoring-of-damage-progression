@@ -1,12 +1,14 @@
 clc
 
+load("Scripts\Step1_CameraPoseEstimation\Data\Workspace\workspace.mat");
+
 thisDir = fileparts(mfilename("fullpath"));
 demoRoot = fileparts(fileparts(thisDir));
 
 imageDir = fullfile(demoRoot,"Data","Images");
 listPath = fullfile(demoRoot,"Scripts","Step2_SimilarityIndex","out_of_bridge.txt");
 depthFolderPath = fullfile(demoRoot, ...
-    "Scripts","Step1_CameraPoseEstimation","Data","DepthmapFiles");
+    "Scripts","Step1_CameraPoseEstimation","Data","Depthmaps");
 
 try
     SCF = scalefactor(imageDir,listPath);
