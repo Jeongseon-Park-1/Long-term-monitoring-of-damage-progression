@@ -31,7 +31,7 @@ run("Scripts\Step2_SimilarityIndex\Step2.m")
 What Step2.m does:
 - Extracts GNSS metadata from images and computes the physical scale (scale conversion factor, SCF) by aligning camera optical centers with GNSS coordinates using the Procrustes method.
 
-  **Note:** The file `out_of_bridge.txt` in the `Step2_SimilarityIndex` folder contains images manually identified during the initial inspection as being captured from the outer boundary of the bridge. Only these images are used for the Procrustes alignment because their GNSS measurements are more reliable.
+  **Note:** The file `out_of_bridge.txt` in the `Step2_SimilarityIndex` folder contains images manually identified during the initial inspection as being captured from the outer boundary of the bridge. Only these images are used for the Procrustes analysis because their GNSS measurements are more reliable.
 
 - Reads damage masks for query images
 - Identifies query images listed in `Segmentation_mask/Damage_detected_images.txt` and projects pixels from each of these query images into all reference images
